@@ -1,334 +1,397 @@
-[INFO ] 2022-08-22 19:40:24.135 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
-[INFO ] 2022-08-22 19:40:24.135 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 8104 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
-[INFO ] 2022-08-22 19:40:24.151 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
-[INFO ] 2022-08-22 19:40:28.389 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2022-08-22 19:40:28.733 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 310 ms. Found 2 JPA repository interfaces.
-[INFO ] 2022-08-22 19:40:29.962 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.DefaultAWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2022-08-22 19:40:30.968 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-[INFO ] 2022-08-22 19:40:30.994 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-[INFO ] 2022-08-22 19:40:30.996 :        o.a.c.c.StandardService - Starting service [Tomcat]
-[INFO ] 2022-08-22 19:40:30.997 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-[INFO ] 2022-08-22 19:40:31.336 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
-[INFO ] 2022-08-22 19:40:31.337 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6994 ms
-[INFO ] 2022-08-22 19:40:31.683 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-08-22 19:40:31.960 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-08-22 19:40:32.072 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[INFO ] 2022-08-22 19:40:32.173 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-[INFO ] 2022-08-22 19:40:32.432 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[INFO ] 2022-08-22 19:40:32.621 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-[INFO ] 2022-08-22 19:40:33.776 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[INFO ] 2022-08-22 19:40:33.794 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 19:40:33.815 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 19:40:33.816 : o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-[INFO ] 2022-08-22 19:40:33.830 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[INFO ] 2022-08-22 19:40:33.842 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
-[INFO ] 2022-08-22 19:40:33.846 :        o.a.c.c.StandardService - Stopping service [Tomcat]
-[INFO ] 2022-08-22 19:40:33.875 : o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-[INFO ] 2022-08-22 19:41:30.808 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 15332 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
-[INFO ] 2022-08-22 19:41:30.856 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
-[INFO ] 2022-08-22 19:41:32.284 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
-[INFO ] 2022-08-22 19:41:36.033 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2022-08-22 19:41:36.512 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 449 ms. Found 2 JPA repository interfaces.
-[INFO ] 2022-08-22 19:41:39.187 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.DefaultAWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2022-08-22 19:41:39.773 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-[INFO ] 2022-08-22 19:41:39.787 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-[INFO ] 2022-08-22 19:41:39.788 :        o.a.c.c.StandardService - Starting service [Tomcat]
-[INFO ] 2022-08-22 19:41:39.789 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-[INFO ] 2022-08-22 19:41:40.241 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
-[INFO ] 2022-08-22 19:41:40.242 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 8775 ms
-[INFO ] 2022-08-22 19:41:41.879 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-08-22 19:41:43.559 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-08-22 19:41:43.938 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[INFO ] 2022-08-22 19:41:44.210 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-[INFO ] 2022-08-22 19:41:44.741 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[INFO ] 2022-08-22 19:41:45.004 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-[INFO ] 2022-08-22 19:41:49.795 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[INFO ] 2022-08-22 19:41:49.863 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 19:41:50.047 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 19:41:50.048 : o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-[INFO ] 2022-08-22 19:41:50.100 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[INFO ] 2022-08-22 19:41:50.232 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
-[INFO ] 2022-08-22 19:41:50.240 :        o.a.c.c.StandardService - Stopping service [Tomcat]
-[INFO ] 2022-08-22 19:41:50.321 : o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-[INFO ] 2022-08-22 19:49:03.319 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
-[INFO ] 2022-08-22 19:49:03.331 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 14040 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
-[INFO ] 2022-08-22 19:49:03.338 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
-[INFO ] 2022-08-22 19:49:11.004 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2022-08-22 19:49:11.268 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 193 ms. Found 2 JPA repository interfaces.
-[INFO ] 2022-08-22 19:49:12.336 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.DefaultAWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2022-08-22 19:49:16.291 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-[INFO ] 2022-08-22 19:49:16.375 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-[INFO ] 2022-08-22 19:49:16.376 :        o.a.c.c.StandardService - Starting service [Tomcat]
-[INFO ] 2022-08-22 19:49:16.379 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-[INFO ] 2022-08-22 19:49:18.909 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
-[INFO ] 2022-08-22 19:49:18.911 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 15369 ms
-[INFO ] 2022-08-22 19:49:19.014 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-08-22 19:49:19.528 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-08-22 19:49:19.564 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:springcoredb'
-[INFO ] 2022-08-22 19:49:19.917 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[INFO ] 2022-08-22 19:49:20.057 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-[INFO ] 2022-08-22 19:49:21.521 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[INFO ] 2022-08-22 19:49:22.397 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-[INFO ] 2022-08-22 19:49:25.689 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[INFO ] 2022-08-22 19:49:25.988 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 19:49:27.420 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 19:49:27.425 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[INFO ] 2022-08-22 19:49:27.438 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
-[INFO ] 2022-08-22 19:49:27.441 :        o.a.c.c.StandardService - Stopping service [Tomcat]
-[INFO ] 2022-08-22 19:49:27.471 : o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-[INFO ] 2022-08-22 19:53:11.818 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
-[INFO ] 2022-08-22 19:53:11.818 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 9752 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
-[INFO ] 2022-08-22 19:53:11.826 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
-[INFO ] 2022-08-22 19:53:17.979 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2022-08-22 19:53:18.170 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 169 ms. Found 2 JPA repository interfaces.
-[INFO ] 2022-08-22 19:53:21.002 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.DefaultAWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2022-08-22 19:53:23.484 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-[INFO ] 2022-08-22 19:53:23.507 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-[INFO ] 2022-08-22 19:53:23.509 :        o.a.c.c.StandardService - Starting service [Tomcat]
-[INFO ] 2022-08-22 19:53:23.509 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-[INFO ] 2022-08-22 19:53:23.890 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
-[INFO ] 2022-08-22 19:53:23.890 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 11934 ms
-[INFO ] 2022-08-22 19:53:23.951 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-08-22 19:53:26.911 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-08-22 19:53:26.944 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
-[INFO ] 2022-08-22 19:53:29.242 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[INFO ] 2022-08-22 19:53:29.862 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-[INFO ] 2022-08-22 19:53:30.398 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[INFO ] 2022-08-22 19:53:30.640 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-[INFO ] 2022-08-22 19:53:36.892 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[INFO ] 2022-08-22 19:53:36.909 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 19:53:39.631 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 19:53:39.647 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[INFO ] 2022-08-22 19:53:39.751 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
-[INFO ] 2022-08-22 19:53:39.759 :        o.a.c.c.StandardService - Stopping service [Tomcat]
-[INFO ] 2022-08-22 19:53:39.805 : o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-[INFO ] 2022-08-22 20:01:09.477 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 8084 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
-[INFO ] 2022-08-22 20:01:09.486 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
-[INFO ] 2022-08-22 20:01:09.703 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
-[INFO ] 2022-08-22 20:01:16.529 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2022-08-22 20:01:17.319 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 756 ms. Found 2 JPA repository interfaces.
-[INFO ] 2022-08-22 20:01:20.510 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.DefaultAWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2022-08-22 20:01:21.285 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-[INFO ] 2022-08-22 20:01:21.303 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-[INFO ] 2022-08-22 20:01:21.304 :        o.a.c.c.StandardService - Starting service [Tomcat]
-[INFO ] 2022-08-22 20:01:21.304 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-[INFO ] 2022-08-22 20:01:22.196 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
-[INFO ] 2022-08-22 20:01:22.206 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 12366 ms
-[INFO ] 2022-08-22 20:01:22.473 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-08-22 20:01:25.392 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-08-22 20:01:25.466 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
-[INFO ] 2022-08-22 20:01:26.398 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[INFO ] 2022-08-22 20:01:26.516 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-[INFO ] 2022-08-22 20:01:26.847 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[INFO ] 2022-08-22 20:01:27.053 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-[INFO ] 2022-08-22 20:01:33.200 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[INFO ] 2022-08-22 20:01:33.216 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:01:35.418 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:01:35.425 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[INFO ] 2022-08-22 20:01:35.711 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
-[INFO ] 2022-08-22 20:01:35.722 :        o.a.c.c.StandardService - Stopping service [Tomcat]
-[INFO ] 2022-08-22 20:01:35.815 : o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-[INFO ] 2022-08-22 20:07:13.203 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
-[INFO ] 2022-08-22 20:07:13.203 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 6156 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
-[INFO ] 2022-08-22 20:07:13.213 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
-[INFO ] 2022-08-22 20:07:14.981 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2022-08-22 20:07:15.124 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 118 ms. Found 2 JPA repository interfaces.
-[INFO ] 2022-08-22 20:07:15.752 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.DefaultAWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2022-08-22 20:07:16.150 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-[INFO ] 2022-08-22 20:07:16.163 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-[INFO ] 2022-08-22 20:07:16.164 :        o.a.c.c.StandardService - Starting service [Tomcat]
-[INFO ] 2022-08-22 20:07:16.164 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-[INFO ] 2022-08-22 20:07:16.328 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
-[INFO ] 2022-08-22 20:07:16.328 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2991 ms
-[INFO ] 2022-08-22 20:07:16.361 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-08-22 20:07:16.713 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-08-22 20:07:16.726 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
-[INFO ] 2022-08-22 20:07:16.905 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[INFO ] 2022-08-22 20:07:16.969 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-[INFO ] 2022-08-22 20:07:17.230 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[INFO ] 2022-08-22 20:07:17.412 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-[INFO ] 2022-08-22 20:07:18.519 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[INFO ] 2022-08-22 20:07:18.535 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:07:19.044 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:07:19.047 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[INFO ] 2022-08-22 20:07:19.075 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
-[INFO ] 2022-08-22 20:07:19.078 :        o.a.c.c.StandardService - Stopping service [Tomcat]
-[INFO ] 2022-08-22 20:07:19.099 : o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-[INFO ] 2022-08-22 20:11:22.718 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
-[INFO ] 2022-08-22 20:11:22.718 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 13160 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
-[INFO ] 2022-08-22 20:11:22.732 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
-[INFO ] 2022-08-22 20:11:25.367 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2022-08-22 20:11:25.576 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 194 ms. Found 2 JPA repository interfaces.
-[INFO ] 2022-08-22 20:11:26.305 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.DefaultAWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2022-08-22 20:11:26.925 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-[INFO ] 2022-08-22 20:11:26.938 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-[INFO ] 2022-08-22 20:11:26.939 :        o.a.c.c.StandardService - Starting service [Tomcat]
-[INFO ] 2022-08-22 20:11:26.939 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-[INFO ] 2022-08-22 20:11:27.142 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
-[INFO ] 2022-08-22 20:11:27.143 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4113 ms
-[INFO ] 2022-08-22 20:11:27.184 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-08-22 20:11:27.541 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-08-22 20:11:27.553 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
-[INFO ] 2022-08-22 20:11:27.749 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[INFO ] 2022-08-22 20:11:27.840 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-[INFO ] 2022-08-22 20:11:28.047 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[INFO ] 2022-08-22 20:11:28.203 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-[INFO ] 2022-08-22 20:11:29.319 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[INFO ] 2022-08-22 20:11:29.337 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:11:29.973 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:11:29.975 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[INFO ] 2022-08-22 20:11:29.994 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
-[INFO ] 2022-08-22 20:11:29.996 :        o.a.c.c.StandardService - Stopping service [Tomcat]
-[INFO ] 2022-08-22 20:11:30.009 : o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-[INFO ] 2022-08-22 20:13:06.896 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
-[INFO ] 2022-08-22 20:13:06.896 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 16416 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
-[INFO ] 2022-08-22 20:13:06.906 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
-[INFO ] 2022-08-22 20:13:08.802 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2022-08-22 20:13:08.937 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 123 ms. Found 2 JPA repository interfaces.
-[INFO ] 2022-08-22 20:13:09.619 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.DefaultAWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2022-08-22 20:13:10.537 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-[INFO ] 2022-08-22 20:13:10.563 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-[INFO ] 2022-08-22 20:13:10.565 :        o.a.c.c.StandardService - Starting service [Tomcat]
-[INFO ] 2022-08-22 20:13:10.565 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-[INFO ] 2022-08-22 20:13:10.859 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
-[INFO ] 2022-08-22 20:13:10.859 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3824 ms
-[INFO ] 2022-08-22 20:13:10.925 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-08-22 20:13:11.588 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-08-22 20:13:11.611 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
-[INFO ] 2022-08-22 20:13:11.884 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[INFO ] 2022-08-22 20:13:11.969 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-[INFO ] 2022-08-22 20:13:12.253 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[INFO ] 2022-08-22 20:13:12.429 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-[INFO ] 2022-08-22 20:13:13.538 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[INFO ] 2022-08-22 20:13:13.557 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:13:14.069 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:13:14.071 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[INFO ] 2022-08-22 20:13:14.092 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
-[INFO ] 2022-08-22 20:13:14.094 :        o.a.c.c.StandardService - Stopping service [Tomcat]
-[INFO ] 2022-08-22 20:13:14.109 : o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-[INFO ] 2022-08-22 20:19:43.182 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
-[INFO ] 2022-08-22 20:19:43.182 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 11596 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
-[INFO ] 2022-08-22 20:19:43.190 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
-[INFO ] 2022-08-22 20:19:45.181 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2022-08-22 20:19:45.332 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 137 ms. Found 2 JPA repository interfaces.
-[INFO ] 2022-08-22 20:19:45.985 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.DefaultAWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2022-08-22 20:19:46.469 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-[INFO ] 2022-08-22 20:19:46.491 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-[INFO ] 2022-08-22 20:19:46.492 :        o.a.c.c.StandardService - Starting service [Tomcat]
-[INFO ] 2022-08-22 20:19:46.492 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-[INFO ] 2022-08-22 20:19:46.777 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
-[INFO ] 2022-08-22 20:19:46.777 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3456 ms
-[INFO ] 2022-08-22 20:19:46.830 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-08-22 20:19:47.302 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-08-22 20:19:47.318 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
-[INFO ] 2022-08-22 20:19:47.501 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[INFO ] 2022-08-22 20:19:47.572 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-[INFO ] 2022-08-22 20:19:47.784 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[INFO ] 2022-08-22 20:19:47.932 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-[INFO ] 2022-08-22 20:19:49.113 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[INFO ] 2022-08-22 20:19:49.134 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:19:49.677 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:19:49.682 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[INFO ] 2022-08-22 20:19:49.712 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
-[INFO ] 2022-08-22 20:19:49.714 :        o.a.c.c.StandardService - Stopping service [Tomcat]
-[INFO ] 2022-08-22 20:19:49.730 : o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-[INFO ] 2022-08-22 20:20:22.059 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 15608 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
-[INFO ] 2022-08-22 20:20:22.060 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
-[INFO ] 2022-08-22 20:20:22.073 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
-[INFO ] 2022-08-22 20:20:24.796 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2022-08-22 20:20:24.947 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 135 ms. Found 2 JPA repository interfaces.
-[INFO ] 2022-08-22 20:20:25.895 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.DefaultAWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2022-08-22 20:20:26.833 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-[INFO ] 2022-08-22 20:20:26.857 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-[INFO ] 2022-08-22 20:20:26.859 :        o.a.c.c.StandardService - Starting service [Tomcat]
-[INFO ] 2022-08-22 20:20:26.859 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-[INFO ] 2022-08-22 20:20:27.141 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
-[INFO ] 2022-08-22 20:20:27.142 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4905 ms
-[INFO ] 2022-08-22 20:20:27.186 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-08-22 20:20:27.744 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-08-22 20:20:27.758 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
-[INFO ] 2022-08-22 20:20:27.985 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[INFO ] 2022-08-22 20:20:28.064 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-[INFO ] 2022-08-22 20:20:28.397 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[INFO ] 2022-08-22 20:20:28.679 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-[INFO ] 2022-08-22 20:20:30.167 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[INFO ] 2022-08-22 20:20:30.188 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:20:31.968 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:20:31.973 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[INFO ] 2022-08-22 20:20:32.000 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
-[INFO ] 2022-08-22 20:20:32.003 :        o.a.c.c.StandardService - Stopping service [Tomcat]
-[INFO ] 2022-08-22 20:20:32.025 : o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-[INFO ] 2022-08-22 20:47:28.649 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
-[INFO ] 2022-08-22 20:47:28.649 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 4276 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
-[INFO ] 2022-08-22 20:47:28.655 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
-[INFO ] 2022-08-22 20:47:29.865 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2022-08-22 20:47:29.927 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 55 ms. Found 2 JPA repository interfaces.
-[INFO ] 2022-08-22 20:47:30.226 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.DefaultAWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2022-08-22 20:47:30.493 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-[INFO ] 2022-08-22 20:47:30.503 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-[INFO ] 2022-08-22 20:47:30.503 :        o.a.c.c.StandardService - Starting service [Tomcat]
-[INFO ] 2022-08-22 20:47:30.504 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-[INFO ] 2022-08-22 20:47:30.643 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
-[INFO ] 2022-08-22 20:47:30.643 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1899 ms
-[INFO ] 2022-08-22 20:47:30.668 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-08-22 20:47:30.948 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-08-22 20:47:30.958 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
-[INFO ] 2022-08-22 20:47:31.123 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[INFO ] 2022-08-22 20:47:31.181 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-[INFO ] 2022-08-22 20:47:31.330 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[INFO ] 2022-08-22 20:47:31.454 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-[INFO ] 2022-08-22 20:47:32.220 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[INFO ] 2022-08-22 20:47:32.236 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:47:32.854 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:47:32.857 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[INFO ] 2022-08-22 20:47:32.871 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
-[INFO ] 2022-08-22 20:47:32.872 :        o.a.c.c.StandardService - Stopping service [Tomcat]
-[INFO ] 2022-08-22 20:47:32.884 : o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-[INFO ] 2022-08-22 20:50:34.955 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
-[INFO ] 2022-08-22 20:50:34.955 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 17856 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
-[INFO ] 2022-08-22 20:50:34.966 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
-[INFO ] 2022-08-22 20:50:36.162 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2022-08-22 20:50:36.233 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 63 ms. Found 2 JPA repository interfaces.
-[INFO ] 2022-08-22 20:50:36.498 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2022-08-22 20:50:36.822 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-[INFO ] 2022-08-22 20:50:36.832 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-[INFO ] 2022-08-22 20:50:36.833 :        o.a.c.c.StandardService - Starting service [Tomcat]
-[INFO ] 2022-08-22 20:50:36.833 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-[INFO ] 2022-08-22 20:50:36.970 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
-[INFO ] 2022-08-22 20:50:36.971 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1888 ms
-[INFO ] 2022-08-22 20:50:37.014 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-08-22 20:50:37.314 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-08-22 20:50:37.324 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
-[INFO ] 2022-08-22 20:50:37.467 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[INFO ] 2022-08-22 20:50:37.535 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-[INFO ] 2022-08-22 20:50:37.732 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[INFO ] 2022-08-22 20:50:37.887 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-[INFO ] 2022-08-22 20:50:38.737 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[INFO ] 2022-08-22 20:50:38.744 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2022-08-22 20:50:39.762 : o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3cfab56d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6b6fde93, org.springframework.security.web.context.SecurityContextPersistenceFilter@2b6ff016, org.springframework.security.web.header.HeaderWriterFilter@470866d1, org.springframework.web.filter.CorsFilter@599f1b7, org.springframework.security.web.authentication.logout.LogoutFilter@3ad9fea, com.whochucompany.byteclone.jwt.JwtAuthenticationFilter@51d34f02, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7a491a60, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@80b6098, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@441762b8, org.springframework.security.web.session.SessionManagementFilter@118c1faa, org.springframework.security.web.access.ExceptionTranslationFilter@6f30d0eb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5a20f793]
-[INFO ] 2022-08-22 20:50:39.769 : o.s.s.w.DefaultSecurityFilterChain - Will not secure Ant [pattern='/h2-console/**']
-[INFO ] 2022-08-22 20:50:40.245 :      o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-[INFO ] 2022-08-22 20:50:40.271 :    o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
-[INFO ] 2022-08-22 20:50:40.283 :     c.w.b.ByteCloneApplication - Started ByteCloneApplication in 6.352 seconds (JVM running for 7.808)
+[INFO ] 2022-08-23 02:52:04.934 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 13148 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
+[INFO ] 2022-08-23 02:52:05.081 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2022-08-23 02:52:05.107 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
+[INFO ] 2022-08-23 02:52:09.196 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2022-08-23 02:52:09.857 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 619 ms. Found 2 JPA repository interfaces.
+[INFO ] 2022-08-23 02:52:11.777 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2022-08-23 02:52:13.152 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-08-23 02:52:13.189 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 02:52:13.192 :        o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2022-08-23 02:52:13.194 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+[INFO ] 2022-08-23 02:52:13.690 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-08-23 02:52:13.691 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 8205 ms
+[INFO ] 2022-08-23 02:52:13.791 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-23 02:52:15.830 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-23 02:52:15.869 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
+[INFO ] 2022-08-23 02:52:16.402 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2022-08-23 02:52:16.551 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
+[INFO ] 2022-08-23 02:52:17.022 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[INFO ] 2022-08-23 02:52:17.398 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[INFO ] 2022-08-23 02:52:19.405 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2022-08-23 02:52:19.422 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 02:52:22.326 : o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@41092c8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2e590e36, org.springframework.security.web.context.SecurityContextPersistenceFilter@7bdddfa4, org.springframework.security.web.header.HeaderWriterFilter@574e4184, org.springframework.web.filter.CorsFilter@3fc2a1d1, org.springframework.security.web.authentication.logout.LogoutFilter@11ec2b2f, com.whochucompany.byteclone.jwt.JwtAuthenticationFilter@752e4223, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1d0fc0bc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2003edf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7528089c, org.springframework.security.web.session.SessionManagementFilter@50d6af87, org.springframework.security.web.access.ExceptionTranslationFilter@3ad9fea, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7e24a2e2]
+[INFO ] 2022-08-23 02:52:22.349 : o.s.s.w.DefaultSecurityFilterChain - Will not secure Ant [pattern='/h2-console/**']
+[INFO ] 2022-08-23 02:52:23.789 :      o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 02:52:23.835 :    o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-08-23 02:52:23.861 :     c.w.b.ByteCloneApplication - Started ByteCloneApplication in 21.966 seconds (JVM running for 30.484)
+[INFO ] 2022-08-23 02:58:32.017 :              o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2022-08-23 02:58:32.019 :      o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2022-08-23 02:58:32.028 :      o.s.w.s.DispatcherServlet - Completed initialization in 9 ms
+[INFO ] 2022-08-23 03:06:24.550 :      c.w.b.s.MemberServiceImpl - msg : koo님 회원가입이 성공
+[INFO ] 2022-08-23 03:11:21.974 :          c.w.b.j.TokenProvider - 만료된 JWT 토큰입니다.
+[INFO ] 2022-08-23 03:21:36.932 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 03:21:36.937 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[INFO ] 2022-08-23 03:21:37.372 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+[INFO ] 2022-08-23 03:25:27.776 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
+[INFO ] 2022-08-23 03:25:27.776 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 11596 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
+[INFO ] 2022-08-23 03:25:27.787 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2022-08-23 03:25:30.964 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2022-08-23 03:25:31.183 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 191 ms. Found 2 JPA repository interfaces.
+[INFO ] 2022-08-23 03:25:31.780 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2022-08-23 03:25:32.404 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-08-23 03:25:32.417 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 03:25:32.418 :        o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2022-08-23 03:25:32.419 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+[INFO ] 2022-08-23 03:25:32.611 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-08-23 03:25:32.611 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4641 ms
+[INFO ] 2022-08-23 03:25:32.651 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-23 03:25:33.151 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-23 03:25:33.171 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
+[INFO ] 2022-08-23 03:25:33.415 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2022-08-23 03:25:33.493 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
+[INFO ] 2022-08-23 03:25:33.760 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[INFO ] 2022-08-23 03:25:33.968 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[INFO ] 2022-08-23 03:25:35.043 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2022-08-23 03:25:35.060 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 03:25:36.331 : o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@397bd46b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@d863bb, org.springframework.security.web.context.SecurityContextPersistenceFilter@69d2c460, org.springframework.security.web.header.HeaderWriterFilter@325236f5, org.springframework.web.filter.CorsFilter@76ebd595, org.springframework.security.web.authentication.logout.LogoutFilter@29ddaa8e, com.whochucompany.byteclone.jwt.JwtAuthenticationFilter@4560eb15, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3e984100, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@13e6c544, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@225fb75e, org.springframework.security.web.session.SessionManagementFilter@73633230, org.springframework.security.web.access.ExceptionTranslationFilter@dc3eda6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@16257f8c]
+[INFO ] 2022-08-23 03:25:36.342 : o.s.s.w.DefaultSecurityFilterChain - Will not secure Ant [pattern='/h2-console/**']
+[INFO ] 2022-08-23 03:25:36.832 :      o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 03:25:36.855 :    o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-08-23 03:25:36.869 :     c.w.b.ByteCloneApplication - Started ByteCloneApplication in 10.547 seconds (JVM running for 12.905)
+[INFO ] 2022-08-23 03:25:52.626 :              o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2022-08-23 03:25:52.627 :      o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2022-08-23 03:25:52.631 :      o.s.w.s.DispatcherServlet - Completed initialization in 4 ms
+[INFO ] 2022-08-23 03:25:54.449 :      c.w.b.s.MemberServiceImpl - msg : koo님 회원가입이 성공
+[INFO ] 2022-08-23 03:47:04.635 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 03:47:04.638 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[INFO ] 2022-08-23 03:47:04.658 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+[INFO ] 2022-08-23 03:50:08.252 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
+[INFO ] 2022-08-23 03:50:08.255 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 16376 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
+[INFO ] 2022-08-23 03:50:08.262 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2022-08-23 03:50:10.144 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2022-08-23 03:50:10.281 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 120 ms. Found 2 JPA repository interfaces.
+[INFO ] 2022-08-23 03:50:10.700 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2022-08-23 03:50:11.183 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-08-23 03:50:11.197 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 03:50:11.198 :        o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2022-08-23 03:50:11.198 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+[INFO ] 2022-08-23 03:50:11.379 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-08-23 03:50:11.379 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2991 ms
+[INFO ] 2022-08-23 03:50:11.421 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-23 03:50:11.801 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-23 03:50:11.816 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
+[INFO ] 2022-08-23 03:50:11.998 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2022-08-23 03:50:12.072 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
+[INFO ] 2022-08-23 03:50:12.294 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[INFO ] 2022-08-23 03:50:12.551 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[INFO ] 2022-08-23 03:50:13.602 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2022-08-23 03:50:13.619 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 03:50:15.271 : o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@225fb75e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@61d9dd15, org.springframework.security.web.context.SecurityContextPersistenceFilter@6c68f29c, org.springframework.security.web.header.HeaderWriterFilter@215f8d7, org.springframework.web.filter.CorsFilter@4936fbc6, org.springframework.security.web.authentication.logout.LogoutFilter@248ba4fc, com.whochucompany.byteclone.jwt.JwtAuthenticationFilter@b4c89b6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@47d7e4b6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@623ed5ed, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@54f62ac6, org.springframework.security.web.session.SessionManagementFilter@34a99d8, org.springframework.security.web.access.ExceptionTranslationFilter@325236f5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@442151d1]
+[INFO ] 2022-08-23 03:50:15.281 : o.s.s.w.DefaultSecurityFilterChain - Will not secure Ant [pattern='/h2-console/**']
+[INFO ] 2022-08-23 03:50:15.835 :      o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 03:50:15.870 :    o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-08-23 03:50:15.890 :     c.w.b.ByteCloneApplication - Started ByteCloneApplication in 8.842 seconds (JVM running for 14.446)
+[INFO ] 2022-08-23 03:50:30.931 :              o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2022-08-23 03:50:30.932 :      o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2022-08-23 03:50:30.974 :      o.s.w.s.DispatcherServlet - Completed initialization in 6 ms
+[INFO ] 2022-08-23 03:50:33.268 :      c.w.b.s.MemberServiceImpl - msg : koo님 회원가입이 성공
+[INFO ] 2022-08-23 03:52:09.709 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 03:52:09.710 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[INFO ] 2022-08-23 03:52:09.727 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+[INFO ] 2022-08-23 03:55:37.190 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 16340 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
+[INFO ] 2022-08-23 03:55:37.188 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
+[INFO ] 2022-08-23 03:55:37.195 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2022-08-23 03:55:38.479 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2022-08-23 03:55:38.564 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 72 ms. Found 2 JPA repository interfaces.
+[INFO ] 2022-08-23 03:55:38.803 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2022-08-23 03:55:39.154 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-08-23 03:55:39.166 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 03:55:39.167 :        o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2022-08-23 03:55:39.168 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+[INFO ] 2022-08-23 03:55:39.343 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-08-23 03:55:39.344 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2061 ms
+[INFO ] 2022-08-23 03:55:39.383 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-23 03:55:39.947 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-23 03:55:39.966 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
+[INFO ] 2022-08-23 03:55:40.239 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2022-08-23 03:55:40.337 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
+[INFO ] 2022-08-23 03:55:40.654 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[INFO ] 2022-08-23 03:55:40.874 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[INFO ] 2022-08-23 03:55:42.482 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2022-08-23 03:55:42.500 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 03:55:44.485 : o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2446be5f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2d4f1ddd, org.springframework.security.web.context.SecurityContextPersistenceFilter@571903ff, org.springframework.security.web.header.HeaderWriterFilter@5b49b1df, org.springframework.web.filter.CorsFilter@5b4880b3, org.springframework.security.web.authentication.logout.LogoutFilter@66df362c, com.whochucompany.byteclone.jwt.JwtAuthenticationFilter@5ae67f05, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3f1e18b1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@727de450, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4bc39640, org.springframework.security.web.session.SessionManagementFilter@1c24639e, org.springframework.security.web.access.ExceptionTranslationFilter@248ba4fc, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5f596a1a]
+[INFO ] 2022-08-23 03:55:44.491 : o.s.s.w.DefaultSecurityFilterChain - Will not secure Ant [pattern='/h2-console/**']
+[INFO ] 2022-08-23 03:55:45.107 :      o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 03:55:45.140 :    o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-08-23 03:55:45.160 :     c.w.b.ByteCloneApplication - Started ByteCloneApplication in 8.785 seconds (JVM running for 11.438)
+[INFO ] 2022-08-23 03:55:52.693 :              o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2022-08-23 03:55:52.696 :      o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2022-08-23 03:55:52.702 :      o.s.w.s.DispatcherServlet - Completed initialization in 4 ms
+[INFO ] 2022-08-23 03:55:56.166 :      c.w.b.s.MemberServiceImpl - msg : koo님 회원가입이 성공
+[INFO ] 2022-08-23 04:04:23.313 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 04:04:23.315 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[INFO ] 2022-08-23 04:04:23.329 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+[INFO ] 2022-08-23 04:05:10.800 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
+[INFO ] 2022-08-23 04:05:10.802 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 5716 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
+[INFO ] 2022-08-23 04:05:10.811 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2022-08-23 04:05:13.037 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2022-08-23 04:05:13.193 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 135 ms. Found 2 JPA repository interfaces.
+[INFO ] 2022-08-23 04:05:13.673 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2022-08-23 04:05:14.289 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-08-23 04:05:14.308 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 04:05:14.311 :        o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2022-08-23 04:05:14.311 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+[INFO ] 2022-08-23 04:05:14.590 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-08-23 04:05:14.591 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3627 ms
+[INFO ] 2022-08-23 04:05:14.637 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-23 04:05:15.106 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-23 04:05:15.118 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
+[INFO ] 2022-08-23 04:05:15.282 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2022-08-23 04:05:15.370 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
+[INFO ] 2022-08-23 04:05:15.608 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[INFO ] 2022-08-23 04:05:15.826 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[INFO ] 2022-08-23 04:05:17.187 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2022-08-23 04:05:17.200 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 04:05:18.649 : o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@291522f1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@85eba52, org.springframework.security.web.context.SecurityContextPersistenceFilter@11fa11b2, org.springframework.security.web.header.HeaderWriterFilter@6f9999f6, org.springframework.web.filter.CorsFilter@1a34f8e2, org.springframework.security.web.authentication.logout.LogoutFilter@2b6ff016, com.whochucompany.byteclone.jwt.JwtAuthenticationFilter@222a7429, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4c678a1f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@217009bd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@22a8c837, org.springframework.security.web.session.SessionManagementFilter@68ea1eb5, org.springframework.security.web.access.ExceptionTranslationFilter@2305aad0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4936fbc6]
+[INFO ] 2022-08-23 04:05:18.653 : o.s.s.w.DefaultSecurityFilterChain - Will not secure Ant [pattern='/h2-console/**']
+[INFO ] 2022-08-23 04:05:19.121 :      o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 04:05:19.146 :    o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-08-23 04:05:19.160 :     c.w.b.ByteCloneApplication - Started ByteCloneApplication in 9.641 seconds (JVM running for 14.293)
+[INFO ] 2022-08-23 04:05:26.450 :              o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2022-08-23 04:05:26.451 :      o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2022-08-23 04:05:26.456 :      o.s.w.s.DispatcherServlet - Completed initialization in 4 ms
+[INFO ] 2022-08-23 04:05:28.746 :      c.w.b.s.MemberServiceImpl - msg : koo님 회원가입이 성공
+[INFO ] 2022-08-23 04:16:28.532 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 04:16:28.578 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[INFO ] 2022-08-23 04:16:28.693 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+[INFO ] 2022-08-23 04:17:05.850 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
+[INFO ] 2022-08-23 04:17:05.854 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 12408 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
+[INFO ] 2022-08-23 04:17:05.858 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2022-08-23 04:17:07.818 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2022-08-23 04:17:08.025 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 187 ms. Found 2 JPA repository interfaces.
+[INFO ] 2022-08-23 04:17:08.573 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2022-08-23 04:17:09.196 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-08-23 04:17:09.219 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 04:17:09.221 :        o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2022-08-23 04:17:09.222 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+[INFO ] 2022-08-23 04:17:09.522 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-08-23 04:17:09.523 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3557 ms
+[INFO ] 2022-08-23 04:17:09.568 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-23 04:17:10.407 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-23 04:17:10.494 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
+[INFO ] 2022-08-23 04:17:11.496 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2022-08-23 04:17:11.729 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
+[INFO ] 2022-08-23 04:17:12.623 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[INFO ] 2022-08-23 04:17:13.373 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[INFO ] 2022-08-23 04:17:17.172 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2022-08-23 04:17:17.197 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 04:17:21.481 : o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4560eb15, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@225fb75e, org.springframework.security.web.context.SecurityContextPersistenceFilter@13e6c544, org.springframework.security.web.header.HeaderWriterFilter@21539796, org.springframework.web.filter.CorsFilter@61d9dd15, org.springframework.security.web.authentication.logout.LogoutFilter@6046fba0, com.whochucompany.byteclone.jwt.JwtAuthenticationFilter@4936fbc6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3b3b2290, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@47d7e4b6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@b4c89b6, org.springframework.security.web.session.SessionManagementFilter@69d2c460, org.springframework.security.web.access.ExceptionTranslationFilter@206e5183, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7945986a]
+[INFO ] 2022-08-23 04:17:21.521 : o.s.s.w.DefaultSecurityFilterChain - Will not secure Ant [pattern='/h2-console/**']
+[INFO ] 2022-08-23 04:17:23.587 :      o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 04:17:23.664 :    o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-08-23 04:17:23.711 :     c.w.b.ByteCloneApplication - Started ByteCloneApplication in 19.137 seconds (JVM running for 23.076)
+[INFO ] 2022-08-23 04:17:31.257 :              o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2022-08-23 04:17:31.258 :      o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2022-08-23 04:17:31.262 :      o.s.w.s.DispatcherServlet - Completed initialization in 3 ms
+[INFO ] 2022-08-23 04:17:33.218 :      c.w.b.s.MemberServiceImpl - msg : koo님 회원가입이 성공
+[INFO ] 2022-08-23 04:20:15.900 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 04:20:15.921 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[INFO ] 2022-08-23 04:20:15.988 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+[INFO ] 2022-08-23 04:20:54.976 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
+[INFO ] 2022-08-23 04:20:54.972 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 13896 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
+[INFO ] 2022-08-23 04:20:54.983 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2022-08-23 04:20:56.790 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2022-08-23 04:20:56.928 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 123 ms. Found 2 JPA repository interfaces.
+[INFO ] 2022-08-23 04:20:57.385 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2022-08-23 04:20:57.951 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-08-23 04:20:57.962 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 04:20:57.963 :        o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2022-08-23 04:20:57.963 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+[INFO ] 2022-08-23 04:20:58.199 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-08-23 04:20:58.199 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3089 ms
+[INFO ] 2022-08-23 04:20:58.264 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-23 04:20:58.709 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-23 04:20:58.729 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
+[INFO ] 2022-08-23 04:20:58.937 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2022-08-23 04:20:59.017 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
+[INFO ] 2022-08-23 04:20:59.277 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[INFO ] 2022-08-23 04:20:59.497 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[INFO ] 2022-08-23 04:21:00.764 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2022-08-23 04:21:00.784 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 04:21:02.336 : o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@543c887, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@75f446df, org.springframework.security.web.context.SecurityContextPersistenceFilter@356ab368, org.springframework.security.web.header.HeaderWriterFilter@7827cdfc, org.springframework.web.filter.CorsFilter@3751baf6, org.springframework.security.web.authentication.logout.LogoutFilter@1e12fdcf, com.whochucompany.byteclone.jwt.JwtAuthenticationFilter@27e656e6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@c555e1e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@64e247e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3cfab56d, org.springframework.security.web.session.SessionManagementFilter@19d3f4fb, org.springframework.security.web.access.ExceptionTranslationFilter@5aefdb9e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6672b0ea]
+[INFO ] 2022-08-23 04:21:02.344 : o.s.s.w.DefaultSecurityFilterChain - Will not secure Ant [pattern='/h2-console/**']
+[INFO ] 2022-08-23 04:21:02.990 :      o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 04:21:03.024 :    o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-08-23 04:21:03.050 :     c.w.b.ByteCloneApplication - Started ByteCloneApplication in 10.472 seconds (JVM running for 16.657)
+[INFO ] 2022-08-23 04:21:10.914 :              o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2022-08-23 04:21:10.916 :      o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2022-08-23 04:21:10.925 :      o.s.w.s.DispatcherServlet - Completed initialization in 8 ms
+[INFO ] 2022-08-23 04:21:13.593 :      c.w.b.s.MemberServiceImpl - msg : koo님 회원가입이 성공
+[INFO ] 2022-08-23 04:34:47.940 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 04:34:47.968 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[INFO ] 2022-08-23 04:34:48.140 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+[INFO ] 2022-08-23 04:37:00.845 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
+[INFO ] 2022-08-23 04:37:00.845 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 6944 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
+[INFO ] 2022-08-23 04:37:00.864 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2022-08-23 04:37:07.732 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2022-08-23 04:37:08.687 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 885 ms. Found 2 JPA repository interfaces.
+[INFO ] 2022-08-23 04:37:11.198 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2022-08-23 04:37:13.892 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-08-23 04:37:13.973 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 04:37:13.979 :        o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2022-08-23 04:37:13.980 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+[INFO ] 2022-08-23 04:37:15.042 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-08-23 04:37:15.044 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 13492 ms
+[INFO ] 2022-08-23 04:37:15.228 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-23 04:37:17.325 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-23 04:37:17.379 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
+[INFO ] 2022-08-23 04:37:18.635 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2022-08-23 04:37:18.875 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
+[INFO ] 2022-08-23 04:37:19.558 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[INFO ] 2022-08-23 04:37:20.159 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[INFO ] 2022-08-23 04:37:25.396 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2022-08-23 04:37:25.442 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 04:37:31.680 : o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@c3c63c1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5e75cf7a, org.springframework.security.web.context.SecurityContextPersistenceFilter@4a0f4282, org.springframework.security.web.header.HeaderWriterFilter@5aefdb9e, org.springframework.web.filter.CorsFilter@6f12fca0, org.springframework.security.web.authentication.logout.LogoutFilter@50d6af87, com.whochucompany.byteclone.jwt.JwtAuthenticationFilter@12c30824, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@43cf97a8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5c1ea00, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7d0e43d6, org.springframework.security.web.session.SessionManagementFilter@80b6098, org.springframework.security.web.access.ExceptionTranslationFilter@118c1faa, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3751baf6]
+[INFO ] 2022-08-23 04:37:31.717 : o.s.s.w.DefaultSecurityFilterChain - Will not secure Ant [pattern='/h2-console/**']
+[INFO ] 2022-08-23 04:37:33.626 :      o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 04:37:33.725 :    o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-08-23 04:37:33.763 :     c.w.b.ByteCloneApplication - Started ByteCloneApplication in 36.585 seconds (JVM running for 47.609)
+[INFO ] 2022-08-23 04:37:37.645 :              o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2022-08-23 04:37:37.647 :      o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2022-08-23 04:37:37.654 :      o.s.w.s.DispatcherServlet - Completed initialization in 7 ms
+[INFO ] 2022-08-23 04:37:39.252 :      c.w.b.s.MemberServiceImpl - msg : koo님 회원가입이 성공
+[INFO ] 2022-08-23 04:57:49.371 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 04:57:49.376 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[INFO ] 2022-08-23 04:57:49.928 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+[INFO ] 2022-08-23 05:02:26.649 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
+[INFO ] 2022-08-23 05:02:26.654 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 9948 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
+[INFO ] 2022-08-23 05:02:26.660 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2022-08-23 05:02:28.997 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2022-08-23 05:02:29.143 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 130 ms. Found 2 JPA repository interfaces.
+[INFO ] 2022-08-23 05:02:29.584 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2022-08-23 05:02:30.200 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-08-23 05:02:30.218 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 05:02:30.219 :        o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2022-08-23 05:02:30.220 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+[INFO ] 2022-08-23 05:02:30.512 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-08-23 05:02:30.513 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3718 ms
+[INFO ] 2022-08-23 05:02:30.579 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-23 05:02:31.055 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-23 05:02:31.072 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
+[INFO ] 2022-08-23 05:02:31.296 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2022-08-23 05:02:31.389 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
+[INFO ] 2022-08-23 05:02:31.688 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[INFO ] 2022-08-23 05:02:31.977 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[INFO ] 2022-08-23 05:02:33.424 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2022-08-23 05:02:33.440 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 05:02:35.320 : o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@77604a86, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@63fde7ca, org.springframework.security.web.context.SecurityContextPersistenceFilter@229c4d34, org.springframework.security.web.header.HeaderWriterFilter@217009bd, org.springframework.web.filter.CorsFilter@3a6409ec, org.springframework.security.web.authentication.logout.LogoutFilter@43cf97a8, com.whochucompany.byteclone.jwt.JwtAuthenticationFilter@4779df3d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@689eab53, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c24639e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@32b8992e, org.springframework.security.web.session.SessionManagementFilter@248ba4fc, org.springframework.security.web.access.ExceptionTranslationFilter@d7c00de, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@40ef1934]
+[INFO ] 2022-08-23 05:02:35.328 : o.s.s.w.DefaultSecurityFilterChain - Will not secure Ant [pattern='/h2-console/**']
+[INFO ] 2022-08-23 05:02:35.969 :      o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 05:02:36.004 :    o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-08-23 05:02:36.023 :     c.w.b.ByteCloneApplication - Started ByteCloneApplication in 10.886 seconds (JVM running for 14.367)
+[INFO ] 2022-08-23 05:03:13.491 :              o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2022-08-23 05:03:13.492 :      o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2022-08-23 05:03:13.493 :      o.s.w.s.DispatcherServlet - Completed initialization in 1 ms
+[INFO ] 2022-08-23 05:03:14.174 :      c.w.b.s.MemberServiceImpl - msg : koo님 회원가입이 성공
+[INFO ] 2022-08-23 05:06:55.954 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 05:06:55.956 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[INFO ] 2022-08-23 05:06:55.972 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+[INFO ] 2022-08-23 05:07:11.446 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
+[INFO ] 2022-08-23 05:07:11.448 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 11668 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
+[INFO ] 2022-08-23 05:07:11.456 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2022-08-23 05:07:13.729 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2022-08-23 05:07:13.887 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 142 ms. Found 2 JPA repository interfaces.
+[INFO ] 2022-08-23 05:07:14.388 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2022-08-23 05:07:14.992 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-08-23 05:07:15.008 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 05:07:15.009 :        o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2022-08-23 05:07:15.009 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+[INFO ] 2022-08-23 05:07:15.304 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-08-23 05:07:15.304 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3706 ms
+[INFO ] 2022-08-23 05:07:15.354 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-23 05:07:15.979 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-23 05:07:15.999 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
+[INFO ] 2022-08-23 05:07:16.270 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2022-08-23 05:07:16.355 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
+[INFO ] 2022-08-23 05:07:16.639 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[INFO ] 2022-08-23 05:07:16.856 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[INFO ] 2022-08-23 05:07:18.061 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2022-08-23 05:07:18.072 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 05:07:19.567 : o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4779df3d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@32b8992e, org.springframework.security.web.context.SecurityContextPersistenceFilter@1c24639e, org.springframework.security.web.header.HeaderWriterFilter@54cce500, org.springframework.web.filter.CorsFilter@3ef7fb04, org.springframework.security.web.authentication.logout.LogoutFilter@3398ed12, com.whochucompany.byteclone.jwt.JwtAuthenticationFilter@2446be5f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4ac0fdc7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@571903ff, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2d4f1ddd, org.springframework.security.web.session.SessionManagementFilter@229c4d34, org.springframework.security.web.access.ExceptionTranslationFilter@4c678a1f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1a34f8e2]
+[INFO ] 2022-08-23 05:07:19.570 : o.s.s.w.DefaultSecurityFilterChain - Will not secure Ant [pattern='/h2-console/**']
+[INFO ] 2022-08-23 05:07:20.075 :      o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 05:07:20.116 :    o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-08-23 05:07:20.139 :     c.w.b.ByteCloneApplication - Started ByteCloneApplication in 10.511 seconds (JVM running for 13.897)
+[INFO ] 2022-08-23 05:07:25.708 :              o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2022-08-23 05:07:25.709 :      o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2022-08-23 05:07:25.711 :      o.s.w.s.DispatcherServlet - Completed initialization in 2 ms
+[INFO ] 2022-08-23 05:07:26.388 :      c.w.b.s.MemberServiceImpl - msg : koo님 회원가입이 성공
+[INFO ] 2022-08-23 05:09:12.763 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 05:09:12.765 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[INFO ] 2022-08-23 05:09:12.780 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+[INFO ] 2022-08-23 05:09:35.572 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
+[INFO ] 2022-08-23 05:09:35.580 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 12592 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
+[INFO ] 2022-08-23 05:09:35.584 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2022-08-23 05:09:37.895 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2022-08-23 05:09:38.052 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 139 ms. Found 2 JPA repository interfaces.
+[INFO ] 2022-08-23 05:09:38.566 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2022-08-23 05:09:39.177 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-08-23 05:09:39.189 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 05:09:39.190 :        o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2022-08-23 05:09:39.190 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+[INFO ] 2022-08-23 05:09:39.356 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-08-23 05:09:39.357 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3625 ms
+[INFO ] 2022-08-23 05:09:39.397 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-23 05:09:39.865 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-23 05:09:39.885 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
+[INFO ] 2022-08-23 05:09:40.155 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2022-08-23 05:09:40.256 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
+[INFO ] 2022-08-23 05:09:40.542 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[INFO ] 2022-08-23 05:09:40.785 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[INFO ] 2022-08-23 05:09:42.259 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2022-08-23 05:09:42.279 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 05:09:43.833 : o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@d863bb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@76ebd595, org.springframework.security.web.context.SecurityContextPersistenceFilter@34a99d8, org.springframework.security.web.header.HeaderWriterFilter@32eb38e5, org.springframework.web.filter.CorsFilter@4560eb15, org.springframework.security.web.authentication.logout.LogoutFilter@4c678a1f, com.whochucompany.byteclone.jwt.JwtAuthenticationFilter@225fb75e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@13e6c544, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6c68f29c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@61d9dd15, org.springframework.security.web.session.SessionManagementFilter@21539796, org.springframework.security.web.access.ExceptionTranslationFilter@1372696b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@62158618]
+[INFO ] 2022-08-23 05:09:43.850 : o.s.s.w.DefaultSecurityFilterChain - Will not secure Ant [pattern='/h2-console/**']
+[INFO ] 2022-08-23 05:09:44.564 :      o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 05:09:44.607 :    o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-08-23 05:09:44.630 :     c.w.b.ByteCloneApplication - Started ByteCloneApplication in 10.673 seconds (JVM running for 14.386)
+[INFO ] 2022-08-23 05:09:49.926 :              o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2022-08-23 05:09:49.927 :      o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2022-08-23 05:09:49.930 :      o.s.w.s.DispatcherServlet - Completed initialization in 2 ms
+[INFO ] 2022-08-23 05:09:50.812 :      c.w.b.s.MemberServiceImpl - msg : koo님 회원가입이 성공
+[INFO ] 2022-08-23 05:13:39.978 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 05:13:39.980 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[INFO ] 2022-08-23 05:13:39.996 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+[INFO ] 2022-08-23 05:13:51.572 :              o.h.v.i.u.Version - HV000001: Hibernate Validator 6.2.4.Final
+[INFO ] 2022-08-23 05:13:51.573 :     c.w.b.ByteCloneApplication - Starting ByteCloneApplication using Java 11.0.14 on LAPTOP-17DOA69Q with PID 8084 (C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE\out\production\classes started by Junior Koo in C:\Users\Junior Koo\Desktop\sparta\7주차\ByteClone-BE)
+[INFO ] 2022-08-23 05:13:51.581 :     c.w.b.ByteCloneApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2022-08-23 05:13:52.774 : o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2022-08-23 05:13:52.847 : o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 63 ms. Found 2 JPA repository interfaces.
+[INFO ] 2022-08-23 05:13:53.105 : o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2022-08-23 05:13:53.440 :    o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-08-23 05:13:53.449 :      o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 05:13:53.450 :        o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2022-08-23 05:13:53.450 :         o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+[INFO ] 2022-08-23 05:13:53.578 :              o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-08-23 05:13:53.578 : o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1897 ms
+[INFO ] 2022-08-23 05:13:53.606 :         c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-23 05:13:53.918 :         c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-23 05:13:53.929 : o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/news'
+[INFO ] 2022-08-23 05:13:54.083 :            o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2022-08-23 05:13:54.151 :                    o.h.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
+[INFO ] 2022-08-23 05:13:54.374 :                o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[INFO ] 2022-08-23 05:13:54.587 :                  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[INFO ] 2022-08-23 05:13:55.450 : o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2022-08-23 05:13:55.458 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 05:13:56.489 : o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@32b8992e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3ef7fb04, org.springframework.security.web.context.SecurityContextPersistenceFilter@68ea1eb5, org.springframework.security.web.header.HeaderWriterFilter@1c15a6aa, org.springframework.web.filter.CorsFilter@2446be5f, org.springframework.security.web.authentication.logout.LogoutFilter@118c1faa, com.whochucompany.byteclone.jwt.JwtAuthenticationFilter@2d4f1ddd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@d7c00de, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@11fa11b2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5b4880b3, org.springframework.security.web.session.SessionManagementFilter@61c4fc34, org.springframework.security.web.access.ExceptionTranslationFilter@956cf3d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@222a7429]
+[INFO ] 2022-08-23 05:13:56.499 : o.s.s.w.DefaultSecurityFilterChain - Will not secure Ant [pattern='/h2-console/**']
+[INFO ] 2022-08-23 05:13:56.901 :      o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-08-23 05:13:56.924 :    o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-08-23 05:13:56.934 :     c.w.b.ByteCloneApplication - Started ByteCloneApplication in 6.324 seconds (JVM running for 8.247)
+[INFO ] 2022-08-23 05:14:12.213 :              o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2022-08-23 05:14:12.215 :      o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2022-08-23 05:14:12.215 :      o.s.w.s.DispatcherServlet - Completed initialization in 0 ms
+[INFO ] 2022-08-23 05:14:23.132 :      c.w.b.s.MemberServiceImpl - msg : koo님 회원가입이 성공
+[INFO ] 2022-08-23 05:16:12.827 : o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2022-08-23 05:16:12.829 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[INFO ] 2022-08-23 05:16:12.842 :         c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.

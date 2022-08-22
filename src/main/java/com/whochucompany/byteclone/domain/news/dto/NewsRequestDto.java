@@ -11,10 +11,9 @@ import org.springframework.web.multipart.MultipartFile;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NewsRequestDto {
-
     private String title;
     private String content;
     private MultipartFile image;
     private String view; // 읽기 권한 설정하는 카테고리 as enum
-    private String newsType; // 주제별 구분 카테고리 as enum
+    private String category; // 주제별 구분 카테고리 as enum
 }
