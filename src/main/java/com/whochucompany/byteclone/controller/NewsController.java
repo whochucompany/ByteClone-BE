@@ -1,4 +1,4 @@
-package controller;
+package com.whochucompany.byteclone.controller;
 
 import com.whochucompany.byteclone.domain.news.News;
 import com.whochucompany.byteclone.domain.news.dto.NewsRequestDto;

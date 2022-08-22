@@ -1,4 +1,4 @@
-package controller;
+package com.whochucompany.byteclone.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
