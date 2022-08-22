@@ -2,6 +2,8 @@ package com.whochucompany.byteclone.controller;
 
 import com.whochucompany.byteclone.domain.news.News;
 import com.whochucompany.byteclone.domain.news.dto.NewsRequestDto;
+import com.whochucompany.byteclone.domain.news.dto.NewsResponseDto;
+import com.whochucompany.byteclone.domain.news.dto.PageDto;
 import com.whochucompany.byteclone.service.NewsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -31,7 +33,7 @@ public class NewsController {
 
     // 뉴스기사 전체 조회 == 메인 페이지
     @GetMapping
-    public Page<News> readAllNewsList(@RequestParam("page") int page)
+    public PageDto readAllNewsList(@RequestParam("page") int page)
     {
         page = page -1;  // client에서 1로 들어오면 서버에서 1을 빼서 0부터 인식하도록
         int size = 12;  // page 당 12 개
@@ -40,7 +42,7 @@ public class NewsController {
 
     // newsType 별 전체 조회
     @GetMapping(value = "/{newsType}")
-    public Page<News> readAllNewsTypeList(@RequestParam("page") int page,
+    public NewsResponseDto readAllNewsTypeList(@RequestParam("page") int page,
                                           @RequestParam("size") int size,
                                           @RequestParam("newsType") String newsType,
                                           @RequestParam("isAsc") boolean isAsc)

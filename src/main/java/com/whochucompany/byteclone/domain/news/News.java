@@ -50,7 +50,7 @@ public class News extends Timestamped {
         this.content = newsRequestDto.getContent();
         this.image = image;
         this.view = ViewAuthority.valueOf(newsRequestDto.getView());
-        this.newsType = NewsType.valueOf(newsRequestDto.getNewsType());
+        this.newsType = NewsType.valueOf(newsRequestDto.getCategory());
     }
 
 }

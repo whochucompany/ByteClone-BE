@@ -7,6 +7,8 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.whochucompany.byteclone.controller.ResponseDto;
 import com.whochucompany.byteclone.domain.news.News;
 import com.whochucompany.byteclone.domain.news.dto.NewsRequestDto;
+import com.whochucompany.byteclone.domain.news.dto.NewsResponseDto;
+import com.whochucompany.byteclone.domain.news.dto.PageDto;
 import com.whochucompany.byteclone.domain.news.enums.NewsType;
 import com.whochucompany.byteclone.domain.news.enums.ViewAuthority;
 import com.whochucompany.byteclone.repository.NewsRepository;
@@ -17,11 +19,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -54,7 +59,7 @@ public class NewsService {
 
         // 기사 주제를 구분하는 로직
         try {
-            newsType = NewsType.valueOf(requestDto.getNewsType());
+            newsType = NewsType.valueOf(requestDto.getCategory());
         } catch (IllegalArgumentException e) {
             return ResponseDto.fail("BAD_REQUEST", "CATEGORY에 없는 항목입니다.");
         }
@@ -128,7 +133,7 @@ public class NewsService {
         NewsType newsType = null;
 
         try {
-            newsType = NewsType.valueOf(requestDto.getNewsType());
+            newsType = NewsType.valueOf(requestDto.getCategory());
         } catch (IllegalArgumentException e) {
             return ResponseDto.fail("BAD_REQUEST", "CATEGORY에 없는 항목입니다.");
         }
@@ -160,20 +165,41 @@ public class NewsService {
 
     // 조회: 전체 조회 + 상세 조회 and 전체조회는 비회원, 카테고리별 로 구성됨
     @Transactional(readOnly = true)
-    public Page<News> readAllNewsList(int page, int size) {
+    public PageDto readAllNewsList(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
+        Page<News> newsList = newsRepository.findAllByOrderByCreatedAt(pageable);
 
-        return newsRepository.findAllByOrderByCreatedAt(pageable);
+        List<NewsResponseDto> dtoList = new ArrayList<>();
+        for(News news : newsList){
+            dtoList.add(NewsResponseDto.builder()
+                    .id(news.getNewsId())
+                    .title(news.getTitle())
+                    .image(news.getImage())
+                    .username(news.getMember().getUsername())
+                    .createdAt(news.getCreatedAt())
+                    .view(news.getView())
+                    .category(news.getNewsType())
+                    .build());
+        }
+
+        return PageDto.builder()
+                .TotalElement(newsList.getTotalElements())
+                .TotalPages(newsList.getTotalElements())
+                .NowPage(newsList.getNumber()+1)
+                .NowContent(newsList.getNumberOfElements())
+                .build();
     }
 
     // newsType 별 전체 조회
     @Transactional
-    public Page<News> readAllNewsTypeList(int page, int size, String newsType, boolean isAsc) {
+    public NewsResponseDto readAllNewsTypeList(int page, int size, String newsType, boolean isAsc) {
         Sort.Direction direction = isAsc ? Sort.Direction.ASC : Sort.Direction.DESC;  // 3항 연산자, t/f 값을 반환
         Sort newstype = Sort.by(direction, newsType);
         Pageable pageable = PageRequest.of(page, size, newstype);
 
-        return newsRepository.findAllByNewsType(newsType, pageable);
+        newsRepository.findAllByNewsType(newsType, pageable);
+        return NewsResponseDto.builder()
+                .build();
     }
 
 //    @Transactional(readOnly = true)
