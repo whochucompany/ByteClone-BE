@@ -5,11 +5,11 @@ import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.whochucompany.byteclone.controller.ResponseDto;
-import com.whochucompany.byteclone.domain.news.enums.NewsType;
 import com.whochucompany.byteclone.domain.news.News;
-import com.whochucompany.byteclone.domain.news.enums.ViewAuthority;
 import com.whochucompany.byteclone.domain.news.dto.NewsRequestDto;
-import com.whochucompany.byteclone.domain.repository.NewsRepository;
+import com.whochucompany.byteclone.domain.news.enums.NewsType;
+import com.whochucompany.byteclone.domain.news.enums.ViewAuthority;
+import com.whochucompany.byteclone.repository.NewsRepository;
 import com.whochucompany.byteclone.util.ImageUrlProccessingUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,7 +31,7 @@ public class NewsService {
     private final NewsRepository newsRepository;
     private final AmazonS3Client amazonS3Client;
 
-    @Value("${cloud.aws.s3.bucket}")  // "junior-test-bucket"
+    @Value("${cloud.aws.s3.bucket}")
     private String bucketName;
 
     private final String cloudFrontDomain = "https://d1ig9s8koiuspp.cloudfront.net/";
@@ -107,8 +107,8 @@ public class NewsService {
 
         // news 게시글 존재 유무 확인 로직
 //        News news = newsRepository.findByNewsId(newsId); // 왜 redundant?
-        Optional<News> optionalNews = Optional.ofNullable(newsRepository.findByNewsId(newsId));
-        News news = optionalNews.orElse(null);
+        Optional<News> optionalNews = newsRepository.findByNewsId(newsId);
+        News news = optionalNews.get();
         if (null == news) {
             return ResponseDto.fail("NOT_FOUND", "존재하지 않는 news ID 입니다.");
         }

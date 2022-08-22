@@ -1,6 +1,5 @@
 package com.whochucompany.byteclone.domain.news;
 
-
 import com.whochucompany.byteclone.domain.Timestamped;
 import com.whochucompany.byteclone.domain.member.Member;
 import com.whochucompany.byteclone.domain.news.dto.NewsRequestDto;
@@ -22,8 +21,7 @@ public class News extends Timestamped {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private Long newsId;
     @Column(nullable = false)
     private String title;
 
