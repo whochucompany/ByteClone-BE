@@ -72,6 +72,7 @@ public class CommentService {
                 new RuntimeException("해당 코멘트가 없어요!"));
 
         comment.update(requestDto);
+
         return CommentResponseDto.builder()
                 .id(comment.getId())
                 .userName(comment.getMember().getUsername()) // 유저네임을 들고옴...
@@ -104,13 +105,12 @@ public class CommentService {
 
     @Transactional
     public Member validateMember(HttpServletRequest request) {
-        if (!tokenProvider.validationToken(request.getHeader("Authorization"))) {
+        String accessToken = resolveToken(request.getHeader("Authorization"));
+        if (!tokenProvider.validationToken(accessToken)) {
             return null;
         }
-        String accessToken = request.getHeader("Authorization");
-        accessToken = resolveToken(accessToken);
-        Member member = ((PrincipalDetails) (tokenProvider.getAuthentication(accessToken))).getMember();
-        return member;
+
+        return  tokenProvider.getMemberFromAuthentication();
     }
 
     private String resolveToken(String token){
