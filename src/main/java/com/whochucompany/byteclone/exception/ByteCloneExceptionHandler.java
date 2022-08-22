@@ -11,6 +11,7 @@ public class ByteCloneExceptionHandler {
 
     @ExceptionHandler(value = ByteCloneException.class) // value 로 어떤 exception 을 잡을 것인지.
     public ResponseEntity<Map<String, String>> ExceptionHandler (ByteCloneException e) {
+
         HttpHeaders httpHeaders = new HttpHeaders();
 
         Map<String, String> map = new HashMap<>();

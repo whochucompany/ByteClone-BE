@@ -1,10 +1,13 @@
 package com.whochucompany.byteclone.controller;
 
+import com.whochucompany.byteclone.domain.member.dto.LoginRequestDto;
 import com.whochucompany.byteclone.domain.member.dto.MemberRequestDto;
 import com.whochucompany.byteclone.domain.member.dto.MemberResponseDto;
+import com.whochucompany.byteclone.domain.token.JwtTokenDto;
 import com.whochucompany.byteclone.repository.MemberRepository;
 import com.whochucompany.byteclone.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -47,4 +50,13 @@ public class MemberController {
 
         return new ResponseEntity<>(memberResponseDto, HttpStatus.CREATED);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequestDto loginRequestDto) {
+        JwtTokenDto jwtTokenDto = memberService.login(loginRequestDto);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", jwtTokenDto.getAuthorization());
+        return ResponseEntity.ok().headers(headers).build();
+    }
+
 }
