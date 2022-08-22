@@ -37,10 +37,10 @@ public class MemberServiceImpl implements MemberService{
     public ResponseEntity<?> emailExist(String email) {
         boolean result = memberRepository.existsByEmail(email);
         if (result) { // 결과가 존재하면 참 --> result 가 true 면...
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.entry("message", "등록된 이메일입니다."));
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.entry("result", "false"));
         }
         else {
-            return ResponseEntity.ok().body(Map.entry("message", "사용가능한 이메일입니다."));
+            return ResponseEntity.ok().body(Map.entry("result", "true"));
         }
     }
 

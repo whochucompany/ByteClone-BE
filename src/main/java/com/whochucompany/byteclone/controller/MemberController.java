@@ -22,8 +22,6 @@ public class MemberController {
     private final MemberService memberService;
     private final MemberRepository memberRepository;
 
-    private HttpStatus httpStatus;
-
     // ResponseEntity 는 HttpEntity 를 상속받음으로써 Http Status, Header 와 Body 를 가질 수 있다.
 
     // email 이메일 체크
