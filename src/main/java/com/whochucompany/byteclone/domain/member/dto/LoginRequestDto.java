@@ -3,8 +3,7 @@ package com.whochucompany.byteclone.domain.member.dto;
 import lombok.Getter;
 
 @Getter
-public class MemberRequestDto {
+public class LoginRequestDto {
     private String email;
-    private String username;
     private String password;
 }
