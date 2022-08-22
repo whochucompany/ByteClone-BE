@@ -1,4 +1,19 @@
 package com.whochucompany.byteclone.service;
 
-public class MemberService {
+import com.whochucompany.byteclone.domain.member.dto.LoginRequestDto;
+import com.whochucompany.byteclone.domain.member.dto.MemberRequestDto;
+import com.whochucompany.byteclone.domain.member.dto.MemberResponseDto;
+import com.whochucompany.byteclone.domain.token.JwtTokenDto;
+import org.springframework.http.ResponseEntity;
+
+public interface MemberService {
+    MemberResponseDto saveUser(MemberRequestDto memberRequestDto);
+
+    JwtTokenDto login(LoginRequestDto loginRequestDto);
+
+    ResponseEntity<?> emailExist(String email);
+
+    MemberResponseDto getMember(String username);
+
+
 }
