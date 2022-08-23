@@ -2,6 +2,8 @@ package com.whochucompany.byteclone.controller;
 
 import com.whochucompany.byteclone.domain.news.News;
 import com.whochucompany.byteclone.domain.news.dto.NewsRequestDto;
+import com.whochucompany.byteclone.domain.news.dto.NewsResponseDto;
+import com.whochucompany.byteclone.domain.news.enums.Category;
 import com.whochucompany.byteclone.service.NewsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -57,6 +59,16 @@ public class NewsController {
         news = newsService.findAllByCategory(category, pageable);
 
         return new ResponseEntity<>(news, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/detail/{newsId}")  //상세조회
+    public ResponseEntity<?> readDetailNews(@PathVariable Long newsId){
+        return newsService.readDetailNews(newsId);
+    }
+
+    @DeleteMapping(value = "/{newsId}")
+    public ResponseDto<?> deleteNews(@PathVariable Long newsId, HttpServletRequest request) {
+        return newsService.deleteNews(newsId, request);
     }
 
 
