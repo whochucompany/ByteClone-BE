@@ -47,6 +47,7 @@ public class CommentService {
                 .news(news)
                 .comment(requestDto.getComment())
                 .build();
+
         commentRepository.save(comment);
         return true;
     }
@@ -87,11 +88,11 @@ public class CommentService {
 
         // 유효성 검사 실패시
         if(null==member){  // 멤버가 없을 시 null 반환됨. 그래서 바로 false;
-            return false;
+            throw new NullPointerException("멤버가 없습니다.");
         }
 
         if(optionalNews.isEmpty()){ // 뉴스가 없을시 false 반환
-            return false;
+            throw new NullPointerException("뉴스가 없습니다.");
         }
 
         commentRepository.deleteById(commentId);

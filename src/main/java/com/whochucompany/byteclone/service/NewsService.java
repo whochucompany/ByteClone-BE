@@ -171,7 +171,16 @@ public class NewsService {
         }
 
         news.updateNews(requestDto, result);
-        return ResponseDto.success(news);
+        return ResponseDto.success(NewsResponseDto.builder()
+                .newsId(news.getNewsId())
+                .title(news.getTitle())
+                .username(news.getMember().getUsername())
+                .image(news.getImage())
+                .view(news.getView())
+                .category(news.getCategory())
+                .createdAt(news.getCreatedAt())
+                .build()
+        );
     }
 
     // 조회: 전체 조회 + 상세 조회 and 전체조회는 비회원, 카테고리별 로 구성됨
@@ -262,10 +271,11 @@ public class NewsService {
 
         // news 게시글 존재 유무 확인 로직
         Optional<News> optionalNews = newsRepository.findByNewsId(newsId);
-        News news = optionalNews.get();
-        if (null == news) {
+
+        if (optionalNews.isEmpty()) {
             return ResponseDto.fail("NOT_FOUND", "존재하지 않는 news ID 입니다.");
         }
+        News news = optionalNews.get();  // orElseThorw New~~
 
         // 회원 정보 가져와서 작성자 검증
         if (!news.getMember().getId().equals(member.getId())) {
