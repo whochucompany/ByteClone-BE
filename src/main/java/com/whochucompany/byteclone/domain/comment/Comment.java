@@ -1,5 +1,6 @@
 package com.whochucompany.byteclone.domain.comment;
 
+import com.whochucompany.byteclone.domain.Timestamped;
 import com.whochucompany.byteclone.domain.comment.dto.CommentRequestDto;
 import com.whochucompany.byteclone.domain.member.Member;
 import com.whochucompany.byteclone.domain.news.News;
@@ -15,7 +16,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Entity
-public class Comment {
+public class Comment extends Timestamped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,6 +24,7 @@ public class Comment {
     @JoinColumn(name = "member_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
+
 
     @JoinColumn(name = "news_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)

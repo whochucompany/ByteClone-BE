@@ -5,13 +5,17 @@ import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.whochucompany.byteclone.controller.ResponseDto;
+import com.whochucompany.byteclone.domain.comment.Comment;
+import com.whochucompany.byteclone.domain.comment.dto.CommentListDto;
 import com.whochucompany.byteclone.domain.member.Member;
 import com.whochucompany.byteclone.domain.news.News;
+import com.whochucompany.byteclone.domain.news.dto.NewsDetailResponseDto;
 import com.whochucompany.byteclone.domain.news.dto.NewsRequestDto;
 import com.whochucompany.byteclone.domain.news.dto.NewsResponseDto;
 import com.whochucompany.byteclone.domain.news.enums.Category;
 import com.whochucompany.byteclone.domain.news.enums.View;
 import com.whochucompany.byteclone.jwt.TokenProvider;
+import com.whochucompany.byteclone.repository.CommentRepository;
 import com.whochucompany.byteclone.repository.NewsRepository;
 import com.whochucompany.byteclone.util.ImageUrlProccessingUtils;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +23,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +40,7 @@ public class NewsService {
 
     private final NewsRepository newsRepository;
     private final AmazonS3Client amazonS3Client;
+    private final CommentRepository commentRepository;
 
     private final TokenProvider tokenProvider;
 
@@ -47,6 +54,9 @@ public class NewsService {
     @Transactional
     public ResponseDto<?> createNews(NewsRequestDto requestDto, HttpServletRequest request) throws IOException {
         // 회원 로그인 확인 로직
+
+        
+        
         Member member = validateMember(request);
 
         if(null == member) {
@@ -94,7 +104,7 @@ public class NewsService {
         }
 
         // ** 추가 필요, Member는 회원 검증 로직에서 가져옴
-
+        
 
         News news = News.builder()
                 .title(requestDto.getTitle())
@@ -220,6 +230,43 @@ public class NewsService {
         return newsResponseDtos;
     }
 
+    @Transactional(readOnly = true)
+    public ResponseEntity<?> readDetailNews(Long newsId) {
+        Optional<News> optionalNews = newsRepository.findByNewsId(newsId);
+        if(optionalNews.isEmpty()){
+            throw new NullPointerException("해당 게시글이 없습니다.");
+        }
+        News news = optionalNews.get();
+
+        List<Comment> commentList = commentRepository.findAllByNews(news);
+        List<CommentListDto> commentResponseDtoList = new ArrayList<>();
+        for(Comment comment  : commentList){
+            commentResponseDtoList.add(
+                CommentListDto.builder()
+                        .id(comment.getId())
+                        .comment(comment.getComment())
+                        .username(comment.getMember().getUsername())
+                        .createAt(comment.getCreatedAt())
+                        .build());
+        }
+
+        NewsDetailResponseDto newsDetailResponseDto = NewsDetailResponseDto.builder()
+                .newsId(news.getNewsId())
+                .title(news.getTitle())
+                .username(news.getMember().getUsername())
+                .image(news.getImage())
+                .view(news.getView())
+                .category(news.getCategory())
+                .createdAt(news.getCreatedAt())
+                .content(news.getContent())
+                .commentList(commentResponseDtoList)
+                .build();
+
+        return new ResponseEntity<>(newsDetailResponseDto, HttpStatus.OK);
+    }
+
+
+
     @Transactional
     public Member validateMember(HttpServletRequest request) {
         String accessToken = resolveToken(request.getHeader("Authorization"));
@@ -235,5 +282,6 @@ public class NewsService {
             return token.substring(7);
         throw new RuntimeException("not valid refresh token !!");
     }
+
 
 }
