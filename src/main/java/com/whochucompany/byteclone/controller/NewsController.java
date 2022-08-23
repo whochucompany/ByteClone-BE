@@ -2,9 +2,16 @@ package com.whochucompany.byteclone.controller;
 
 import com.whochucompany.byteclone.domain.news.News;
 import com.whochucompany.byteclone.domain.news.dto.NewsRequestDto;
+import com.whochucompany.byteclone.domain.news.dto.NewsResponseDto;
+import com.whochucompany.byteclone.domain.news.enums.Category;
 import com.whochucompany.byteclone.service.NewsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +27,8 @@ public class NewsController {
     // 뉴스기사 작성
     @PostMapping
     public ResponseDto<?> createNews(@ModelAttribute NewsRequestDto requestDto, HttpServletRequest request) throws IOException {
+        System.out.println("request.getHeader(\"Authorization\") = " + request.getHeader("Authorization"));
+        
         return newsService.createNews(requestDto, request);
     }
 
@@ -31,23 +40,27 @@ public class NewsController {
 
     // 뉴스기사 전체 조회 == 메인 페이지
     @GetMapping
-    public Page<News> readAllNewsList(@RequestParam("page") int page)
-    {
-        page = page -1;  // client에서 1로 들어오면 서버에서 1을 빼서 0부터 인식하도록
-        int size = 12;  // page 당 12 개
-        return newsService.readAllNewsList(page, size);
+    public ResponseEntity<?> readAllNewsList(
+            @PageableDefault(size = 50) Pageable pageable
+    ) {
+        Page<NewsResponseDto> news = newsService.findAll(pageable);
+        return new ResponseEntity<>(news, HttpStatus.OK);
     }
 
-    // newsType 별 전체 조회
-    @GetMapping(value = "/{newsType}")
-    public Page<News> readAllNewsTypeList(@RequestParam("page") int page,
-                                          @RequestParam("size") int size,
-                                          @RequestParam("newsType") String newsType,
-                                          @RequestParam("isAsc") boolean isAsc)
-    {
-        page = page -1; // client에서 1로 들어오면 서버에서 1을 빼서 0부터 인식하도록
+    // Category 별 전체 조회
+    @GetMapping(value = "/{category}")
+    public ResponseEntity<?> readAllNewsListByCategory(
+            @PathVariable("category") Category category,
+            @PageableDefault(size = 50) Pageable pageable
+    ) {
+        System.out.println("category = " + category);
 
-        return newsService.readAllNewsTypeList(page, size, newsType, isAsc);
+        Page<NewsResponseDto> news;
+        news = newsService.findAllByCategory(category, pageable);
+
+        return new ResponseEntity<>(news, HttpStatus.OK);
     }
+
 
 }
+

@@ -5,23 +5,27 @@ import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.whochucompany.byteclone.controller.ResponseDto;
+import com.whochucompany.byteclone.domain.member.Member;
 import com.whochucompany.byteclone.domain.news.News;
 import com.whochucompany.byteclone.domain.news.dto.NewsRequestDto;
-import com.whochucompany.byteclone.domain.news.enums.NewsType;
-import com.whochucompany.byteclone.domain.news.enums.ViewAuthority;
+import com.whochucompany.byteclone.domain.news.dto.NewsResponseDto;
+import com.whochucompany.byteclone.domain.news.enums.Category;
+import com.whochucompany.byteclone.domain.news.enums.View;
+import com.whochucompany.byteclone.jwt.TokenProvider;
 import com.whochucompany.byteclone.repository.NewsRepository;
 import com.whochucompany.byteclone.util.ImageUrlProccessingUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -30,6 +34,8 @@ public class NewsService {
 
     private final NewsRepository newsRepository;
     private final AmazonS3Client amazonS3Client;
+
+    private final TokenProvider tokenProvider;
 
     @Value("${cloud.aws.s3.bucket}")
     private String bucketName;
@@ -41,20 +47,25 @@ public class NewsService {
     @Transactional
     public ResponseDto<?> createNews(NewsRequestDto requestDto, HttpServletRequest request) throws IOException {
         // 회원 로그인 확인 로직
+        Member member = validateMember(request);
 
-        ViewAuthority view = null;
-        NewsType newsType = null;
+        if(null == member) {
+            throw new NullPointerException("회원만 사용 가능합니다.");
+        }
+
+        View view = null;
+        Category category = null;
 
         // 읽기 권한을 구분하는 로직
         try {
-            view = ViewAuthority.valueOf(requestDto.getView());
+            view = View.valueOf(requestDto.getView());
         } catch (IllegalArgumentException e) {
             return ResponseDto.fail("BAD_REQUEST", "VIEW에 없는 항목입니다.");
         }
 
         // 기사 주제를 구분하는 로직
         try {
-            newsType = NewsType.valueOf(requestDto.getNewsType());
+            category = Category.valueOf(requestDto.getCategory());
         } catch (IllegalArgumentException e) {
             return ResponseDto.fail("BAD_REQUEST", "CATEGORY에 없는 항목입니다.");
         }
@@ -90,11 +101,22 @@ public class NewsService {
                 .content(requestDto.getContent()) // 얘는 크기 크니깐 return 주지 말까?
                 .image(result)
                 .view(view)
-                .newsType(newsType)
+                .member(member)
+                .category(category)
                 .build();
         newsRepository.save(news);
 
-        return ResponseDto.success(news);
+
+
+        NewsResponseDto newsResponseDto =
+                NewsResponseDto.builder().title(news.getTitle())
+                .image(news.getImage())
+                .content(news.getContent())
+                .view(news.getView())
+                .category(news.getCategory())
+                .createdAt(news.getCreatedAt())
+                .build();
+        return ResponseDto.success(newsResponseDto);
     }
 
     // 업데이트
@@ -116,19 +138,19 @@ public class NewsService {
         // 회원 정보 가져와서 작성자 검증
 
         // 읽기 권한 카테고리 수정 로직
-        ViewAuthority view = null;
+        View view = null;
 
         try {
-            view = ViewAuthority.valueOf(requestDto.getView());
+            view = View.valueOf(requestDto.getView());
 
         } catch (IllegalArgumentException e) {
             return ResponseDto.fail("BAD_REQUEST", "VIEW에 없는 항목입니다.");
         }
 
-        NewsType newsType = null;
+        Category category = null;
 
         try {
-            newsType = NewsType.valueOf(requestDto.getNewsType());
+            category = Category.valueOf(requestDto.getCategory());
         } catch (IllegalArgumentException e) {
             return ResponseDto.fail("BAD_REQUEST", "CATEGORY에 없는 항목입니다.");
         }
@@ -159,32 +181,59 @@ public class NewsService {
     }
 
     // 조회: 전체 조회 + 상세 조회 and 전체조회는 비회원, 카테고리별 로 구성됨
+    // 전체 조회 = 회원 + 비회원 모두 열람 가능, (유료+무료) 전체 기사가 조회됨
     @Transactional(readOnly = true)
-    public Page<News> readAllNewsList(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
+    public Page<NewsResponseDto> findAll(Pageable pageable) {
+        Page<News> newsList = newsRepository.findAllByOrderByCreatedAtDesc(pageable);
+        Page<NewsResponseDto> newsResponseDtos = convertToResponseDto(newsList);
 
-        return newsRepository.findAllByOrderByCreatedAt(pageable);
+        return newsResponseDtos;
     }
 
-    // newsType 별 전체 조회
+    private Page<NewsResponseDto> convertToResponseDto(Page<News> newslist) {
+        List<NewsResponseDto> newsList = new ArrayList<>();
+
+        for (News news : newslist) {
+            newsList.add(
+                    NewsResponseDto.builder()
+                            .newsId(news.getNewsId())
+                            .title(news.getTitle())
+                            .username(news.getMember().getUsername())
+                            .image(news.getImage())
+                            .view(news.getView())
+                            .category(news.getCategory())
+                            .createdAt(news.getCreatedAt())
+                            .build()
+            );
+        }
+        return new PageImpl(newsList, newslist.getPageable(), newslist.getTotalElements());
+}
+    // Category 별 전체 조회
+    @Transactional(readOnly = true)
+    public Page<NewsResponseDto> findAllByCategory(Category category, Pageable pageable) {
+        System.out.println("category = " + category);
+
+        Page<News> newsList = newsRepository.findAllByCategoryOrderByCreatedAtDesc(category,pageable);
+
+        Page<NewsResponseDto> newsResponseDtos = convertToResponseDto(newsList);
+
+        return newsResponseDtos;
+    }
+
     @Transactional
-    public Page<News> readAllNewsTypeList(int page, int size, String newsType, boolean isAsc) {
-        Sort.Direction direction = isAsc ? Sort.Direction.ASC : Sort.Direction.DESC;  // 3항 연산자, t/f 값을 반환
-        Sort newstype = Sort.by(direction, newsType);
-        Pageable pageable = PageRequest.of(page, size, newstype);
+    public Member validateMember(HttpServletRequest request) {
+        String accessToken = resolveToken(request.getHeader("Authorization"));
+        if (!tokenProvider.validationToken(accessToken)) {
+            return null;
+        }
 
-        return newsRepository.findAllByNewsType(newsType, pageable);
+        return tokenProvider.getMemberFromAuthentication();
     }
 
-//    @Transactional(readOnly = true)
-//    public Page<News> readAllNewsList(int page, int size, boolean isAsc) {
-//        Sort.Direction direction = isAsc ? Sort.Direction.ASC : Sort.Direction.DESC;  // 3항연산자, t/f 값을 반환
-//        Sort sort = Sort.by(direction, sortBy);  // direction
-//        Pageable pageable = PageRequest.of(page, size, sort);
-//
-//        return newsRepository.findAllByNewsType(newsType, pageable);
-//    }
-
-    // 상세 조회
+    private String resolveToken(String token){
+        if(token.startsWith("Bearer "))
+            return token.substring(7);
+        throw new RuntimeException("not valid refresh token !!");
+    }
 
 }
