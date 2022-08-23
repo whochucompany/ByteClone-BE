@@ -3,8 +3,8 @@ package com.whochucompany.byteclone.domain.news;
 import com.whochucompany.byteclone.domain.Timestamped;
 import com.whochucompany.byteclone.domain.member.Member;
 import com.whochucompany.byteclone.domain.news.dto.NewsRequestDto;
-import com.whochucompany.byteclone.domain.news.enums.NewsType;
-import com.whochucompany.byteclone.domain.news.enums.ViewAuthority;
+import com.whochucompany.byteclone.domain.news.enums.Category;
+import com.whochucompany.byteclone.domain.news.enums.View;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -34,11 +34,11 @@ public class News extends Timestamped {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private ViewAuthority view;
+    private View view;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private NewsType newsType;
+    private Category category;
 
     // 작성자
     @JoinColumn(name = "member_id", nullable = false)
@@ -49,8 +49,8 @@ public class News extends Timestamped {
         this.title = newsRequestDto.getTitle();
         this.content = newsRequestDto.getContent();
         this.image = image;
-        this.view = ViewAuthority.valueOf(newsRequestDto.getView());
-        this.newsType = NewsType.valueOf(newsRequestDto.getNewsType());
+        this.view = View.valueOf(newsRequestDto.getView());
+        this.category = Category.valueOf(newsRequestDto.getCategory());
     }
 
 }

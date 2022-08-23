@@ -1,7 +1,7 @@
 package com.whochucompany.byteclone.repository;
 
 import com.whochucompany.byteclone.domain.news.News;
-import com.whochucompany.byteclone.domain.news.enums.NewsType;
+import com.whochucompany.byteclone.domain.news.enums.Category;
 import com.whochucompany.byteclone.domain.repository.NewsRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 
-import static com.whochucompany.byteclone.domain.news.enums.ViewAuthority.GUEST;
+import static com.whochucompany.byteclone.domain.news.enums.View.GUEST;
 
 @SpringBootTest
 @TestPropertySource(locations="classpath:application-test.properties")
@@ -53,7 +53,7 @@ class NewsRepositoryTest {
                         "OPEC과 러시아 등 비(非)OPEC 주요 산유국들의 협의체인 OPEC플러스(OPEC+) 정례 회의가 내달 5일로 예정된만큼, 향후 유가의 방향성을 알고 싶다면 정례 회의 내용에 집중해보면 어떨까요?")
                 .image(null)
                 .view(GUEST)
-                .newsType(NewsType.DAILY_BYTE)
+                .category(Category.DAILY_BYTE)
                 .build();
 
         News savedNews = newsRepository.save(news);
