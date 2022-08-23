@@ -26,10 +26,13 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
-application**.properties
+*.properties
 application-*.properties
 application-*.yaml
 application-*.yml
+logback-spring.xml
+logs
+*.log
 
 ### NetBeans ###
 /nbproject/private/
