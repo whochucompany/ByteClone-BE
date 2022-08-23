@@ -66,6 +66,11 @@ public class NewsController {
         return newsService.readDetailNews(newsId);
     }
 
+    @DeleteMapping(value = "/{newsId}")
+    public ResponseDto<?> deleteNews(@PathVariable Long newsId, HttpServletRequest request) {
+        return newsService.deleteNews(newsId, request);
+    }
+
 
 }
 

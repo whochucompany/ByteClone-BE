@@ -47,16 +47,10 @@ public class NewsService {
     @Value("${cloud.aws.s3.bucket}")
     private String bucketName;
 
-    private final String cloudFrontDomain = "https://d1ig9s8koiuspp.cloudfront.net/";
-
-
     // 뉴스 작성
     @Transactional
     public ResponseDto<?> createNews(NewsRequestDto requestDto, HttpServletRequest request) throws IOException {
         // 회원 로그인 확인 로직
-
-        
-        
         Member member = validateMember(request);
 
         if(null == member) {
@@ -95,16 +89,10 @@ public class NewsService {
             // S3 업로드 후, 저장된 url을 result에 넣어줌
             result = amazonS3Client.getUrl(bucketName, fileName).toString();
 
-            // CloudFront 도메인을 통해 바로 이미지를 보여주기 위한 처리 로직
-            String[] nameWithNoS3info = result.split(".com/");
-            String proccessedFileName = nameWithNoS3info[1];
-
-            // 브라우저에 result를 넣으면, 이미지를 바로 볼 수 있음
-            result = cloudFrontDomain + proccessedFileName;
         }
 
         // ** 추가 필요, Member는 회원 검증 로직에서 가져옴
-        
+
 
         News news = News.builder()
                 .title(requestDto.getTitle())
@@ -120,12 +108,12 @@ public class NewsService {
 
         NewsResponseDto newsResponseDto =
                 NewsResponseDto.builder().title(news.getTitle())
-                .image(news.getImage())
-                .content(news.getContent())
-                .view(news.getView())
-                .category(news.getCategory())
-                .createdAt(news.getCreatedAt())
-                .build();
+                        .image(news.getImage())
+                        .content(news.getContent())
+                        .view(news.getView())
+                        .category(news.getCategory())
+                        .createdAt(news.getCreatedAt())
+                        .build();
         return ResponseDto.success(newsResponseDto);
     }
 
@@ -134,8 +122,10 @@ public class NewsService {
     public ResponseDto<?> updateNews(Long newsId, NewsRequestDto requestDto, HttpServletRequest request) throws IOException {
 
         // 회원 토큰 검증 로직
-
-        // 글 작성자 검증 로직
+        Member member = validateMember(request);
+        if (null == member) {
+            throw new NullPointerException("회원만 사용 가능합니다.");
+        }
 
         // news 게시글 존재 유무 확인 로직
 //        News news = newsRepository.findByNewsId(newsId); // 왜 redundant?
@@ -146,10 +136,12 @@ public class NewsService {
         }
 
         // 회원 정보 가져와서 작성자 검증
+        if (!news.getMember().getId().equals(member.getId())) {
+            return ResponseDto.fail("BAD_REQUEST", "작성자만 수정할 수 있습니다.");
+        }
 
         // 읽기 권한 카테고리 수정 로직
-        View view = null;
-
+        View view = news.getView();
         try {
             view = View.valueOf(requestDto.getView());
 
@@ -157,15 +149,14 @@ public class NewsService {
             return ResponseDto.fail("BAD_REQUEST", "VIEW에 없는 항목입니다.");
         }
 
-        Category category = null;
-
+        Category category = news.getCategory();
         try {
             category = Category.valueOf(requestDto.getCategory());
         } catch (IllegalArgumentException e) {
             return ResponseDto.fail("BAD_REQUEST", "CATEGORY에 없는 항목입니다.");
         }
 
-        String result = null;
+        String result = news.getImage();
 
         if (!requestDto.getImage().isEmpty()) {
             String fileName = ImageUrlProccessingUtils.buildFileName(requestDto.getImage().getOriginalFilename());
@@ -177,17 +168,10 @@ public class NewsService {
                     .withCannedAcl(CannedAccessControlList.PublicRead));
 
             result = amazonS3Client.getUrl(bucketName, fileName).toString();
-
-            String[] nameWithNoS3info = result.split(".com/");
-            String proccessedFileName = nameWithNoS3info[1];
-
-            result = cloudFrontDomain + proccessedFileName;
         }
-
 
         news.updateNews(requestDto, result);
         return ResponseDto.success(news);
-
     }
 
     // 조회: 전체 조회 + 상세 조회 and 전체조회는 비회원, 카테고리별 로 구성됨
@@ -217,13 +201,14 @@ public class NewsService {
             );
         }
         return new PageImpl(newsList, newslist.getPageable(), newslist.getTotalElements());
-}
+    }
+
     // Category 별 전체 조회
     @Transactional(readOnly = true)
     public Page<NewsResponseDto> findAllByCategory(Category category, Pageable pageable) {
         System.out.println("category = " + category);
 
-        Page<News> newsList = newsRepository.findAllByCategoryOrderByCreatedAtDesc(category,pageable);
+        Page<News> newsList = newsRepository.findAllByCategoryOrderByCreatedAtDesc(category, pageable);
 
         Page<NewsResponseDto> newsResponseDtos = convertToResponseDto(newsList);
 
@@ -268,12 +253,36 @@ public class NewsService {
 
 
     @Transactional
+    public ResponseDto<?> deleteNews(Long newsId, HttpServletRequest request) {
+        // 회원 토큰 검증 로직
+        Member member = validateMember(request);
+        if (null == member) {
+            throw new NullPointerException("회원만 사용 가능합니다.");
+        }
+
+        // news 게시글 존재 유무 확인 로직
+        Optional<News> optionalNews = newsRepository.findByNewsId(newsId);
+        News news = optionalNews.get();
+        if (null == news) {
+            return ResponseDto.fail("NOT_FOUND", "존재하지 않는 news ID 입니다.");
+        }
+
+        // 회원 정보 가져와서 작성자 검증
+        if (!news.getMember().getId().equals(member.getId())) {
+            return ResponseDto.fail("BAD_REQUEST", "작성자만 수정할 수 있습니다.");
+        }
+
+        newsRepository.deleteById(newsId);
+
+        return ResponseDto.success(true);
+    }
+
+    @Transactional
     public Member validateMember(HttpServletRequest request) {
         String accessToken = resolveToken(request.getHeader("Authorization"));
         if (!tokenProvider.validationToken(accessToken)) {
             return null;
         }
-
         return tokenProvider.getMemberFromAuthentication();
     }
 
@@ -282,6 +291,5 @@ public class NewsService {
             return token.substring(7);
         throw new RuntimeException("not valid refresh token !!");
     }
-
 
 }
