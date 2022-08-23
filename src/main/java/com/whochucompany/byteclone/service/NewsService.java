@@ -40,9 +40,6 @@ public class NewsService {
     @Value("${cloud.aws.s3.bucket}")
     private String bucketName;
 
-    private final String cloudFrontDomain = "https://d1ig9s8koiuspp.cloudfront.net/";
-
-
     // 뉴스 작성
     @Transactional
     public ResponseDto<?> createNews(NewsRequestDto requestDto, HttpServletRequest request) throws IOException {
@@ -85,16 +82,9 @@ public class NewsService {
             // S3 업로드 후, 저장된 url을 result에 넣어줌
             result = amazonS3Client.getUrl(bucketName, fileName).toString();
 
-            // CloudFront 도메인을 통해 바로 이미지를 보여주기 위한 처리 로직
-            String[] nameWithNoS3info = result.split(".com/");
-            String proccessedFileName = nameWithNoS3info[1];
-
-            // 브라우저에 result를 넣으면, 이미지를 바로 볼 수 있음
-            result = cloudFrontDomain + proccessedFileName;
         }
 
         // ** 추가 필요, Member는 회원 검증 로직에서 가져옴
-
 
         News news = News.builder()
                 .title(requestDto.getTitle())
@@ -168,11 +158,6 @@ public class NewsService {
                     .withCannedAcl(CannedAccessControlList.PublicRead));
 
         result = amazonS3Client.getUrl(bucketName, fileName).toString();
-
-        String[] nameWithNoS3info = result.split(".com/");
-        String proccessedFileName = nameWithNoS3info[1];
-
-        result = cloudFrontDomain + proccessedFileName;
         }
 
         news.updateNews(requestDto, result);
@@ -218,6 +203,31 @@ public class NewsService {
         Page<NewsResponseDto> newsResponseDtos = convertToResponseDto(newsList);
 
         return newsResponseDtos;
+    }
+
+    @Transactional
+    public ResponseDto<?> deleteNews(Long newsId, HttpServletRequest request) {
+        // 회원 토큰 검증 로직
+        Member member = validateMember(request);
+        if (null == member) {
+            throw new NullPointerException("회원만 사용 가능합니다.");
+        }
+
+        // news 게시글 존재 유무 확인 로직
+        Optional<News> optionalNews = newsRepository.findByNewsId(newsId);
+        News news = optionalNews.get();
+        if (null == news) {
+            return ResponseDto.fail("NOT_FOUND", "존재하지 않는 news ID 입니다.");
+        }
+
+        // 회원 정보 가져와서 작성자 검증
+        if (!news.getMember().getId().equals(member.getId())) {
+            return ResponseDto.fail("BAD_REQUEST", "작성자만 수정할 수 있습니다.");
+        }
+
+        newsRepository.deleteById(newsId);
+
+        return ResponseDto.success(true);
     }
 
     @Transactional

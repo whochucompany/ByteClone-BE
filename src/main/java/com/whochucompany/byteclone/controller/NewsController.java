@@ -61,6 +61,11 @@ public class NewsController {
         return new ResponseEntity<>(news, HttpStatus.OK);
     }
 
+    @DeleteMapping(value = "/{newsId}")
+    public ResponseDto<?> deleteNews(@PathVariable Long newsId, HttpServletRequest request) {
+        return newsService.deleteNews(newsId, request);
+    }
+
 
 }
 
