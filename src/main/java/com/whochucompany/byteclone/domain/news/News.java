@@ -48,7 +48,7 @@ public class News extends Timestamped {
     private Member member;
 
     //댓글
-    @OneToMany(mappedBy = "news", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "news", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> commentList;
 
     public void updateNews(NewsRequestDto newsRequestDto, String image) {
