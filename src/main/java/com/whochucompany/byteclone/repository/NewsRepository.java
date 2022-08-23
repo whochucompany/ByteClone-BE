@@ -1,6 +1,7 @@
 package com.whochucompany.byteclone.repository;
 
 import com.whochucompany.byteclone.domain.news.News;
+import com.whochucompany.byteclone.domain.news.enums.Category;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,8 +16,10 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     Optional<News> findByNewsId(Long newsId);
 
     // 페이지네이션 관련
-    Page<News> findAllByOrderByCreatedAt(Pageable pageable);
+    Page<News> findAllByOrderByCreatedAtDesc(Pageable pageable);
 
     // newsType 별 페이지네이션
-    Page<News> findAllByNewsType(String newsType, Pageable pageable);
+    Page<News> findAllByCategory(Category category, Pageable pageable);
+
+    Page<News> findAllByCategoryOrderByCreatedAtDesc(Category category, Pageable pageable);
 }
