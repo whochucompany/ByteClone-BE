@@ -2,8 +2,6 @@ package com.whochucompany.byteclone.controller;
 
 import com.whochucompany.byteclone.domain.news.News;
 import com.whochucompany.byteclone.domain.news.dto.NewsRequestDto;
-import com.whochucompany.byteclone.domain.news.dto.NewsResponseDto;
-import com.whochucompany.byteclone.domain.news.enums.Category;
 import com.whochucompany.byteclone.service.NewsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -28,7 +26,7 @@ public class NewsController {
     @PostMapping
     public ResponseDto<?> createNews(@ModelAttribute NewsRequestDto requestDto, HttpServletRequest request) throws IOException {
         System.out.println("request.getHeader(\"Authorization\") = " + request.getHeader("Authorization"));
-        
+
         return newsService.createNews(requestDto, request);
     }
 
