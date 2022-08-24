@@ -1,6 +1,7 @@
 package com.whochucompany.byteclone.domain.news;
 
 import com.whochucompany.byteclone.domain.Timestamped;
+import com.whochucompany.byteclone.domain.comment.Comment;
 import com.whochucompany.byteclone.domain.member.Member;
 import com.whochucompany.byteclone.domain.news.dto.NewsRequestDto;
 import com.whochucompany.byteclone.domain.news.enums.Category;
@@ -11,6 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @Getter
@@ -44,6 +46,10 @@ public class News extends Timestamped {
     @JoinColumn(name = "member_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
+
+    //댓글
+    @OneToMany(mappedBy = "news", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> commentList;
 
     public void updateNews(NewsRequestDto newsRequestDto, String image) {
         this.title = newsRequestDto.getTitle();

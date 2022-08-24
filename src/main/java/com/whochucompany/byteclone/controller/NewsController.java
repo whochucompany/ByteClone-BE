@@ -28,7 +28,7 @@ public class NewsController {
     @PostMapping
     public ResponseDto<?> createNews(@ModelAttribute NewsRequestDto requestDto, HttpServletRequest request) throws IOException {
         System.out.println("request.getHeader(\"Authorization\") = " + request.getHeader("Authorization"));
-        
+
         return newsService.createNews(requestDto, request);
     }
 
@@ -59,6 +59,11 @@ public class NewsController {
         news = newsService.findAllByCategory(category, pageable);
 
         return new ResponseEntity<>(news, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/detail/{newsId}")  //상세조회
+    public ResponseEntity<?> readDetailNews(@PathVariable Long newsId){
+        return newsService.readDetailNews(newsId);
     }
 
     @DeleteMapping(value = "/{newsId}")
