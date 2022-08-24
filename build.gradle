@@ -43,8 +43,6 @@ dependencies {
     // redis
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
-jar {
-    enabled = false
     implementation 'org.springframework.boot:spring-boot-starter-cache'
 
 
@@ -53,10 +51,11 @@ jar {
 //    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
 
+    jar {
+        enabled = false
+    }
 
-
-}
-
-tasks.named('test') {
-    useJUnitPlatform()
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
 }

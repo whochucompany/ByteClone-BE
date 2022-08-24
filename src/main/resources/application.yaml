@@ -20,6 +20,15 @@ spring:
     multipart:
       max-file-size: 20MB
       max-request-size: 20MB
+
+  redis:
+    host: localhost
+    # redistest.tnn4hq.ng.0001.apn2.cache.amazonaws.com:6379
+    port: 6379
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   h2:
     console:
       enabled: 'true'
