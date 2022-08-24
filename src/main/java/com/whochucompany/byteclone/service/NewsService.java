@@ -130,6 +130,7 @@ public class NewsService {
         // news 게시글 존재 유무 확인 로직
 //        News news = newsRepository.findByNewsId(newsId); // 왜 redundant?
         Optional<News> optionalNews = newsRepository.findByNewsId(newsId);
+
         News news = optionalNews.get();
         if (null == news) {
             return ResponseDto.fail("NOT_FOUND", "존재하지 않는 news ID 입니다.");

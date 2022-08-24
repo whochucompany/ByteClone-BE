@@ -2,6 +2,7 @@ package com.whochucompany.byteclone.jwt;
 
 import com.whochucompany.byteclone.domain.member.Member;
 import com.whochucompany.byteclone.domain.token.JwtTokenDto;
+import com.whochucompany.byteclone.domain.token.RefreshToken;
 import com.whochucompany.byteclone.logging.Logging;
 import com.whochucompany.byteclone.repository.RefreshTokenRepository;
 import io.jsonwebtoken.*;
@@ -9,6 +10,7 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,11 +18,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Slf4j
 @Component
@@ -35,17 +41,18 @@ public class TokenProvider {
 
     private final PrincipalDetailsService principalDetailsService;
 
-    // private final RefreshTokenRepository refreshTokenRepository; // 리프레쉬 토큰은 일단 나중에 하쟈..
+    private final RefreshTokenRepository refreshTokenRepository; // 리프레쉬 토큰은 일단 나중에 하쟈..
 
     // TokenProvider 생성자.. secretKey 생성
     public TokenProvider(@Value("${jwt.secret}") String secretKey,
-                         PrincipalDetailsService principalDetailsService) {
+                         PrincipalDetailsService principalDetailsService, RefreshTokenRepository refreshTokenRepository) {
 
         // 로직 안에서는 byte 단위의 secretKey 를 만들어 주어야 한다.
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         // 알고리즘 선택
         this.key = Keys.hmacShaKeyFor(keyBytes);
         this.principalDetailsService = principalDetailsService;
+        this.refreshTokenRepository = refreshTokenRepository;
     }
 
     // Token 생성
@@ -55,6 +62,7 @@ public class TokenProvider {
 
         long now = (new Date()).getTime(); // expire 시간을 지정하기 위해 현재 시간을 가져온다.
         Date accessTokenExpiresIn = new Date(now + ACCESS_TOKEN_EXPIRE_TIME); // 토큰 만료 시간 설정
+        Date refreshTokenExpiresIn = new Date(now + REFRESH_TOKEN_EXPIRE_TIME); // 리프레쉬 토큰 만료 시간 설정
 
         Map<String, Object> headers = new HashMap<>();
         headers.put("alg", "HS256");
@@ -73,9 +81,26 @@ public class TokenProvider {
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
 
+        // Refresh Token
+        String refreshToken = Jwts.builder()
+                .setExpiration(refreshTokenExpiresIn)
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
+
+        // Refresh Token 데이터베이스 저장
+        RefreshToken refreshTokenObj = RefreshToken.builder()
+                .id(member.getId())
+                .refreshToken(refreshToken)
+                .build();
+
+        refreshTokenObj.updateTokenValue(refreshToken);
+
+        refreshTokenRepository.save(refreshTokenObj);
+
         // 생성한 토큰 return
         return JwtTokenDto.builder()
                 .authorization(BEARER_TYPE + " " + accessToken) // Bearer + " " + accessToken
+                .refreshToken(BEARER_TYPE + " " + refreshToken) // Bearer + " " + refreshToken
                 .build();
     }
 
@@ -102,6 +127,7 @@ public class TokenProvider {
 
     // 토큰 유효성 검증
     public boolean validationToken(String token) {
+
         try {
             // 위에서 암호환한 Jwts를 복호화 해줌
             // 위에서 signWith key 를 활용하여 암호화 했으므로 복호활 할 setSigningKey 에도 동일한 key 값을 넣어줌
@@ -120,6 +146,39 @@ public class TokenProvider {
         return false;
     }
 
+    public boolean validationRefreshToken(HttpServletRequest request) {
+
+        try {
+            String token = resolveRefreshToken(request);
+            // 위에서 암호환한 Jwts를 복호화 해줌
+            // 위에서 signWith key 를 활용하여 암호화 했으므로 복호활 할 setSigningKey 에도 동일한 key 값을 넣어줌
+            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            return true;
+
+        } catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
+            log.info("잘못된 JWT 서명입니다.");
+        } catch (ExpiredJwtException e) {
+            log.info("만료된 JWT 토큰입니다.");
+        } catch (UnsupportedJwtException e) {
+            log.info("지원되지 않는 JWT 토큰입니다.");
+        } catch (IllegalStateException e) {
+            log.info("JWT 토큰이 잘못되었습니다.");
+        }
+        return false;
+    }
+
+    private String resolveRefreshToken(HttpServletRequest request) {
+        // 헤더에서 refreshToken 추출
+        String refreshToken = request.getHeader("Refresh-Token");
+
+        if (StringUtils.hasText(refreshToken) && refreshToken.startsWith("Bearer ")) {
+            return refreshToken.substring(7);
+        }
+        return null;
+    }
+
+
+
     // 토큰 복호화
     // Todo :: 나 이 부분 이해 안되..
     private Claims parseClaims(String accessToken) {
@@ -137,5 +196,19 @@ public class TokenProvider {
         }
     }
 
+    @Transactional
+    public ResponseEntity<?> deleteRefreshToken(Member member) {
+        RefreshToken refreshToken = isPresentRefreshToken(member);
+        if (refreshToken == null) {
+            return ResponseEntity.notFound().build();
+        }
+        refreshTokenRepository.delete(refreshToken);
+        return ResponseEntity.ok().body("로그아웃 되셨습니다.");
+    }
 
+    @Transactional(readOnly = true)
+    public RefreshToken isPresentRefreshToken(Member member) {
+        Optional<RefreshToken> optionalRefreshToken = refreshTokenRepository.findById(member.getId());
+        return optionalRefreshToken.orElse(null);
+    }
 }
