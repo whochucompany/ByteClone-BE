@@ -93,6 +93,8 @@ public class TokenProvider {
                 .refreshToken(refreshToken)
                 .build();
 
+        refreshTokenObj.updateTokenValue(refreshToken);
+
         refreshTokenRepository.save(refreshTokenObj);
 
         // 생성한 토큰 return
@@ -209,6 +211,4 @@ public class TokenProvider {
         Optional<RefreshToken> optionalRefreshToken = refreshTokenRepository.findById(member.getId());
         return optionalRefreshToken.orElse(null);
     }
-
-
 }
