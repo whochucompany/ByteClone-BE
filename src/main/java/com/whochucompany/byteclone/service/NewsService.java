@@ -17,11 +17,13 @@ import com.whochucompany.byteclone.domain.news.enums.View;
 import com.whochucompany.byteclone.jwt.TokenProvider;
 import com.whochucompany.byteclone.redis.NewsRedis;
 import com.whochucompany.byteclone.redis.NewsRedisRepository;
+import com.whochucompany.byteclone.redis.RedisConfig;
 import com.whochucompany.byteclone.repository.CommentRepository;
 import com.whochucompany.byteclone.repository.NewsRepository;
 import com.whochucompany.byteclone.util.ImageUrlProccessingUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -31,6 +33,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
+import java.awt.print.Book;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +48,7 @@ public class NewsService {
     private final CommentRepository commentRepository;
     private final TokenProvider tokenProvider;
     private final NewsRedisRepository newsRedisRepository;
+
 
     @Value("${cloud.aws.s3.bucket}")
     private String bucketName;
@@ -122,6 +126,10 @@ public class NewsService {
     // 업데이트
     @Transactional
     public ResponseDto<?> updateNews(Long newsId, NewsRequestDto requestDto, HttpServletRequest request) throws IOException {
+
+        String redisNewId = newsId.toString();
+      newsRedisRepository.deleteById(redisNewId);
+
 
         // 회원 토큰 검증 로직
         Member member = validateMember(request);
@@ -232,7 +240,8 @@ public class NewsService {
 
 //         캐시에 data가 없을 경우 db에서 찾고 캐시에 data를 저장한다.
         String redisNewId = newsId.toString();
-        Optional<NewsRedis> redisNews = newsRedisRepository.findByNewsId(redisNewId); // 여기서 레디스를 못찾음
+//        Optional<NewsRedis> redisNews = newsRedisRepository.findByNewsId(redisNewId); // 여기서 레디스를 못찾음
+        Optional<NewsRedis> redisNews = newsRedisRepository.findById(redisNewId);
         System.out.println("++++++++++++++111111111111++++++++++++++++");
 
         if(redisNews.isEmpty()){
@@ -253,7 +262,7 @@ public class NewsService {
                     .createdAt(news.getCreatedAt())
                     .modifiedAt(news.getModifiedAt())
                     .member(news.getMember())
-//                    .commentList(news.getCommentList())   //여기서 무한참조가 발생, member db에 저장할 필요가 x
+//                    .commentList(news.getCommentList())   //여기서 무한참조가 발생, member db에 저장할 필요가 x 자주변해서 DB에서
                     .build();
             System.out.println("22222222222222222newsRedis.getNewsId() = " + newsRedis.getNewsId());
             newsRedisRepository.save(newsRedis);
@@ -359,6 +368,10 @@ public class NewsService {
 
     @Transactional
     public ResponseDto<?> deleteNews(Long newsId, HttpServletRequest request) {
+
+        String redisNewId = newsId.toString();
+        newsRedisRepository.deleteById(redisNewId);
+
         // 회원 토큰 검증 로직
         Member member = validateMember(request);
         if (null == member) {
@@ -397,6 +410,12 @@ public class NewsService {
             return token.substring(7);
         throw new RuntimeException("not valid refresh token !!");
     }
+
+
+//    @Cacheable("News")
+//    public NewsRedis getNews(String newsId) {
+//        return ;
+//    }
 
 
 
