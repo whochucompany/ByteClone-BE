@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @Getter
 public class JwtTokenDto {
     private String authorization;
-    // private String refreshToken;
+    private String refreshToken;
 }

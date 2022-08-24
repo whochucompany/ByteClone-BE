@@ -1,5 +1,7 @@
 package com.whochucompany.byteclone.controller;
 
+import com.amazonaws.services.kms.model.NotFoundException;
+import com.whochucompany.byteclone.domain.member.Member;
 import com.whochucompany.byteclone.domain.member.dto.LoginRequestDto;
 import com.whochucompany.byteclone.domain.member.dto.MemberRequestDto;
 import com.whochucompany.byteclone.domain.member.dto.MemberResponseDto;
@@ -12,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @RequestMapping("/user")
@@ -54,7 +57,16 @@ public class MemberController {
         JwtTokenDto jwtTokenDto = memberService.login(loginRequestDto);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", jwtTokenDto.getAuthorization());
-        return ResponseEntity.ok().headers(headers).build();
+        headers.add("Refresh-Token", jwtTokenDto.getRefreshToken());
+        Member member = memberRepository.findByEmail(loginRequestDto.getEmail())
+                .orElseThrow(() -> new NotFoundException("사용자를 찾을수 없습니다."));
+        return ResponseEntity.ok().headers(headers)
+                .body(Map.entry("username", member.getUsername()));
+    }
+
+    @DeleteMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletRequest request) {
+        return memberService.logout(request);
     }
 
 }
