@@ -25,6 +25,7 @@ public class CommentService {
     private final TokenProvider tokenProvider;
 
 
+    @Transactional
     public boolean createComment(Long newsId, CommentRequestDto requestDto, HttpServletRequest request) {
         // 유효성 검사 항목 (토큰 유효성 검사)
         Member member = validateMember(request);
@@ -52,6 +53,7 @@ public class CommentService {
         return true;
     }
 
+    @Transactional
     public CommentResponseDto updateComment(Long newsId, Long commentId, CommentRequestDto requestDto, HttpServletRequest request) {
         // 유효성 검사 항목 (토큰 유효성 검사)
         Member member = validateMember(request);
@@ -81,6 +83,7 @@ public class CommentService {
                 .build();
     }
 
+    @Transactional
     public boolean deleteComment(Long newsId, Long commentId, HttpServletRequest request) {
         // 유효성 검사 항목 (토큰 유효성 검사)
         Member member = validateMember(request);
