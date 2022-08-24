@@ -10,6 +10,7 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,11 +18,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Slf4j
 @Component
@@ -120,6 +125,7 @@ public class TokenProvider {
 
     // 토큰 유효성 검증
     public boolean validationToken(String token) {
+
         try {
             // 위에서 암호환한 Jwts를 복호화 해줌
             // 위에서 signWith key 를 활용하여 암호화 했으므로 복호활 할 setSigningKey 에도 동일한 key 값을 넣어줌
@@ -136,6 +142,37 @@ public class TokenProvider {
             log.info("JWT 토큰이 잘못되었습니다.");
         }
         return false;
+    }
+
+    public boolean validationRefreshToken(HttpServletRequest request) {
+
+        try {
+            String token = resolveRefreshToken(request);
+            // 위에서 암호환한 Jwts를 복호화 해줌
+            // 위에서 signWith key 를 활용하여 암호화 했으므로 복호활 할 setSigningKey 에도 동일한 key 값을 넣어줌
+            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            return true;
+
+        } catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
+            log.info("잘못된 JWT 서명입니다.");
+        } catch (ExpiredJwtException e) {
+            log.info("만료된 JWT 토큰입니다.");
+        } catch (UnsupportedJwtException e) {
+            log.info("지원되지 않는 JWT 토큰입니다.");
+        } catch (IllegalStateException e) {
+            log.info("JWT 토큰이 잘못되었습니다.");
+        }
+        return false;
+    }
+
+    private String resolveRefreshToken(HttpServletRequest request) {
+        // 헤더에서 refreshToken 추출
+        String refreshToken = request.getHeader("Refresh-Token");
+
+        if (StringUtils.hasText(refreshToken) && refreshToken.startsWith("Bearer ")) {
+            return refreshToken.substring(7);
+        }
+        return null;
     }
 
 
@@ -155,6 +192,22 @@ public class TokenProvider {
             log.error(error);
             return e.getClaims();
         }
+    }
+
+    @Transactional
+    public ResponseEntity<?> deleteRefreshToken(Member member) {
+        RefreshToken refreshToken = isPresentRefreshToken(member);
+        if (refreshToken == null) {
+            return ResponseEntity.notFound().build();
+        }
+        refreshTokenRepository.delete(refreshToken);
+        return ResponseEntity.ok().body("로그아웃 되셨습니다.");
+    }
+
+    @Transactional(readOnly = true)
+    public RefreshToken isPresentRefreshToken(Member member) {
+        Optional<RefreshToken> optionalRefreshToken = refreshTokenRepository.findById(member.getId());
+        return optionalRefreshToken.orElse(null);
     }
 
 

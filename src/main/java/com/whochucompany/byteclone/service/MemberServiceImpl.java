@@ -19,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 import java.util.Optional;
 
@@ -106,6 +107,18 @@ public class MemberServiceImpl implements MemberService{
         JwtTokenDto jwtTokenDto = tokenProvider.generateTokenDto(authentication);
 
         return jwtTokenDto;
+    }
+
+    // 회원 로그아웃
+    public ResponseEntity<?> logout(HttpServletRequest request) {
+        if (!tokenProvider.validationRefreshToken(request)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("토큰 정보를 찾을 수 없습니다.");
+        }
+        Member member = tokenProvider.getMemberFromAuthentication(); // SecurityContextHolder 에 있는 회원정보를 가져옴
+        if (null == member) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("사용자를 찾을 수 없습니다.");
+        }
+        return tokenProvider.deleteRefreshToken(member);
     }
 
     // 그냥 멤버 가져오는거
