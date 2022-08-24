@@ -13,4 +13,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     boolean existsByEmail(String email); // exist 라는 것이 있구나~
 
 
+
+
 }

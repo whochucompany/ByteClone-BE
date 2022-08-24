@@ -14,8 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
-import java.util.Optional;
 
 @RequestMapping("/user")
 @RequiredArgsConstructor
@@ -57,10 +57,16 @@ public class MemberController {
         JwtTokenDto jwtTokenDto = memberService.login(loginRequestDto);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", jwtTokenDto.getAuthorization());
+        headers.add("Refresh-Token", jwtTokenDto.getRefreshToken());
         Member member = memberRepository.findByEmail(loginRequestDto.getEmail())
                 .orElseThrow(() -> new NotFoundException("사용자를 찾을수 없습니다."));
         return ResponseEntity.ok().headers(headers)
                 .body(Map.entry("username", member.getUsername()));
+    }
+
+    @DeleteMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletRequest request) {
+        return memberService.logout(request);
     }
 
 }
