@@ -1,15 +1,25 @@
 package com.whochucompany.byteclone.domain.token;
 
+import com.whochucompany.byteclone.domain.Timestamped;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
 @Builder
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-public class JwtTokenDto {
-    private String authorization;
+@Entity
+public class RefreshToken {
+
+    @Id
+    @Column(nullable = false)
+    private Long id;
+
+    @Column(nullable = false)
     private String refreshToken;
+
 }

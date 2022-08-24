@@ -23,6 +23,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter { // Filter �
     // 시큐리티 필터는 여러개니까 나중에 SecurityConfig 에 먼저 넣고 싶은 곳이 있다면 공부해서 넣으세욥...
 
     public static final String AUTHORIZATION_HEADER = "Authorization";
+
+    public static final String REFRESH_AUTHORIZATION_HEADER = "RefreshToken";
     public static final String BEARER_PREFIX = "Bearer ";
 
     private final TokenProvider tokenProvider;
@@ -40,6 +42,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter { // Filter �
             // 받아온 Authentication 객체 SecurityContextHolder 에 저장
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
+
+
         filterChain.doFilter(request, response); // 모든 연결된 필터에 request 와 response 를 가져간다 이건가??
     }
 
@@ -50,6 +54,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter { // Filter �
         // 접두사 분리
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(BEARER_PREFIX)) { // 토큰에 값이 있고, 토큰 시작이 "Bearer " 일때
             return bearerToken.substring(7); // "Bearer " + 토큰 정보에서 "Bearer " 를 땜
+        }
+        return null;
+    }
+
+    private String resolveRefreshToken(HttpServletRequest request) {
+        // 헤더에서 refreshToken 추출
+        String refreshToken = request.getHeader(REFRESH_AUTHORIZATION_HEADER);
+
+        if (StringUtils.hasText(refreshToken) && refreshToken.startsWith(BEARER_PREFIX)) {
+            return refreshToken.substring(7);
         }
         return null;
     }

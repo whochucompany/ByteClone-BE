@@ -57,6 +57,7 @@ public class MemberController {
         JwtTokenDto jwtTokenDto = memberService.login(loginRequestDto);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", jwtTokenDto.getAuthorization());
+        headers.add("Refresh-Token", jwtTokenDto.getRefreshToken());
         Member member = memberRepository.findByEmail(loginRequestDto.getEmail())
                 .orElseThrow(() -> new NotFoundException("사용자를 찾을수 없습니다."));
         return ResponseEntity.ok().headers(headers)
