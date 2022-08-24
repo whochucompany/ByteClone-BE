@@ -15,6 +15,8 @@ import com.whochucompany.byteclone.domain.news.dto.NewsResponseDto;
 import com.whochucompany.byteclone.domain.news.enums.Category;
 import com.whochucompany.byteclone.domain.news.enums.View;
 import com.whochucompany.byteclone.jwt.TokenProvider;
+import com.whochucompany.byteclone.redis.NewsRedis;
+import com.whochucompany.byteclone.redis.NewsRedisRepository;
 import com.whochucompany.byteclone.repository.CommentRepository;
 import com.whochucompany.byteclone.repository.NewsRepository;
 import com.whochucompany.byteclone.util.ImageUrlProccessingUtils;
@@ -41,8 +43,8 @@ public class NewsService {
     private final NewsRepository newsRepository;
     private final AmazonS3Client amazonS3Client;
     private final CommentRepository commentRepository;
-
     private final TokenProvider tokenProvider;
+    private final NewsRedisRepository newsRedisRepository;
 
     @Value("${cloud.aws.s3.bucket}")
     private String bucketName;
@@ -227,37 +229,130 @@ public class NewsService {
 
     @Transactional(readOnly = true)
     public ResponseEntity<?> readDetailNews(Long newsId) {
-        Optional<News> optionalNews = newsRepository.findByNewsId(newsId);
-        if(optionalNews.isEmpty()){
-            throw new NullPointerException("해당 게시글이 없습니다.");
+
+//         캐시에 data가 없을 경우 db에서 찾고 캐시에 data를 저장한다.
+        String redisNewId = newsId.toString();
+        Optional<NewsRedis> redisNews = newsRedisRepository.findByNewsId(redisNewId); // 여기서 레디스를 못찾음
+        System.out.println("++++++++++++++111111111111++++++++++++++++");
+
+        if(redisNews.isEmpty()){
+
+            Optional<News> optionalNews = newsRepository.findByNewsId(newsId);
+            if(optionalNews.isEmpty()){
+                throw new NullPointerException("해당 게시글이 없습니다.");
+            }
+            News news = optionalNews.get();
+            // Redis 저장..
+            NewsRedis newsRedis =  NewsRedis.builder()
+                    .newsId(news.getNewsId().toString())
+                    .title(news.getTitle())
+                    .content(news.getContent())
+                    .image(news.getContent())
+                    .view(news.getView())
+                    .category(news.getCategory())
+                    .createdAt(news.getCreatedAt())
+                    .modifiedAt(news.getModifiedAt())
+                    .member(news.getMember())
+//                    .commentList(news.getCommentList())   //여기서 무한참조가 발생, member db에 저장할 필요가 x
+                    .build();
+            System.out.println("22222222222222222newsRedis.getNewsId() = " + newsRedis.getNewsId());
+            newsRedisRepository.save(newsRedis);
+
+            List<Comment> commentList = commentRepository.findAllByNews(news);
+            List<CommentListDto> commentResponseDtoList = new ArrayList<>();
+            for(Comment comment  : commentList){
+                commentResponseDtoList.add(
+                        CommentListDto.builder()
+                                .id(comment.getId())
+                                .comment(comment.getComment())
+                                .username(comment.getMember().getUsername())
+                                .createAt(comment.getCreatedAt())
+                                .build());
+            }
+            NewsDetailResponseDto newsDetailResponseDto = NewsDetailResponseDto.builder()
+                    .newsId(news.getNewsId())
+                    .title(news.getTitle())
+                    .username(news.getMember().getUsername())
+                    .image(news.getImage())
+                    .view(news.getView())
+                    .category(news.getCategory())
+                    .createdAt(news.getCreatedAt())
+                    .content(news.getContent())
+                    .commentList(commentResponseDtoList)
+                    .build();
+
+            return new ResponseEntity<>(newsDetailResponseDto, HttpStatus.OK);
+
+        }else {
+            System.out.println("++++++++++++++++++++33333333333333333+++++++++++++++++++");
+            NewsRedis news = redisNews.get();
+            Long redisLongId = Long.parseLong(news.getNewsId());
+            List<Comment> commentList = commentRepository.findAllByNewsNewsId(redisLongId);
+            List<CommentListDto> commentResponseDtoList = new ArrayList<>();
+            for(Comment comment  : commentList){
+                commentResponseDtoList.add(
+                        CommentListDto.builder()
+                                .id(comment.getId())
+                                .comment(comment.getComment())
+                                .username(comment.getMember().getUsername())
+                                .createAt(comment.getCreatedAt())
+                                .build());
+            }
+            NewsDetailResponseDto newsDetailResponseDto = NewsDetailResponseDto.builder()
+                    .newsId(redisLongId)
+                    .title(news.getTitle())
+                    .username(news.getMember().getUsername())
+                    .image(news.getImage())
+                    .view(news.getView())
+                    .category(news.getCategory())
+                    .createdAt(news.getCreatedAt())
+                    .content(news.getContent())
+                    .commentList(commentResponseDtoList)
+                    .build();
+
+            return new ResponseEntity<>(newsDetailResponseDto, HttpStatus.OK);
+
         }
-        News news = optionalNews.get();
 
-        List<Comment> commentList = commentRepository.findAllByNews(news);
-        List<CommentListDto> commentResponseDtoList = new ArrayList<>();
-        for(Comment comment  : commentList){
-            commentResponseDtoList.add(
-                CommentListDto.builder()
-                        .id(comment.getId())
-                        .comment(comment.getComment())
-                        .username(comment.getMember().getUsername())
-                        .createAt(comment.getCreatedAt())
-                        .build());
-        }
 
-        NewsDetailResponseDto newsDetailResponseDto = NewsDetailResponseDto.builder()
-                .newsId(news.getNewsId())
-                .title(news.getTitle())
-                .username(news.getMember().getUsername())
-                .image(news.getImage())
-                .view(news.getView())
-                .category(news.getCategory())
-                .createdAt(news.getCreatedAt())
-                .content(news.getContent())
-                .commentList(commentResponseDtoList)
-                .build();
 
-        return new ResponseEntity<>(newsDetailResponseDto, HttpStatus.OK);
+
+
+
+/////////////////
+
+//        Optional<News> optionalNews = newsRepository.findByNewsId(newsId);
+//        if(optionalNews.isEmpty()){
+//            throw new NullPointerException("해당 게시글이 없습니다.");
+//        }
+//        News news = optionalNews.get();
+//
+//        List<Comment> commentList = commentRepository.findAllByNews(news);
+//        List<CommentListDto> commentResponseDtoList = new ArrayList<>();
+//        for(Comment comment  : commentList){
+//            commentResponseDtoList.add(
+//                CommentListDto.builder()
+//                        .id(comment.getId())
+//                        .comment(comment.getComment())
+//                        .username(comment.getMember().getUsername())
+//                        .createAt(comment.getCreatedAt())
+//                        .build());
+//        }
+//
+//        NewsDetailResponseDto newsDetailResponseDto = NewsDetailResponseDto.builder()
+//                .newsId(news.getNewsId())
+//                .title(news.getTitle())
+//                .username(news.getMember().getUsername())
+//                .image(news.getImage())
+//                .view(news.getView())
+//                .category(news.getCategory())
+//                .createdAt(news.getCreatedAt())
+//                .content(news.getContent())
+//                .commentList(commentResponseDtoList)
+//                .build();
+//
+//        return new ResponseEntity<>(newsDetailResponseDto, HttpStatus.OK);
+
     }
 
 
@@ -302,5 +397,7 @@ public class NewsService {
             return token.substring(7);
         throw new RuntimeException("not valid refresh token !!");
     }
+
+
 
 }
