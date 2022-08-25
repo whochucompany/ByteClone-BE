@@ -15,6 +15,8 @@ public class CommentController {
 
     @PostMapping("/api/news/{newsId}/comment")
     public boolean createComment(@PathVariable Long newsId, @RequestBody CommentRequestDto requestDto, HttpServletRequest request){
+
+        System.out.println("requestDto = " + requestDto.getComment());
         return commentService.createComment(newsId,requestDto, request);
     }
 

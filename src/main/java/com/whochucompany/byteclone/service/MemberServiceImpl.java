@@ -1,14 +1,17 @@
 package com.whochucompany.byteclone.service;
 
+import com.amazonaws.services.kms.model.NotFoundException;
 import com.whochucompany.byteclone.domain.member.Member;
 import com.whochucompany.byteclone.domain.member.dto.LoginRequestDto;
 import com.whochucompany.byteclone.domain.member.dto.MemberRequestDto;
 import com.whochucompany.byteclone.domain.member.dto.MemberResponseDto;
 import com.whochucompany.byteclone.domain.token.JwtTokenDto;
+import com.whochucompany.byteclone.domain.token.RefreshToken;
 import com.whochucompany.byteclone.jwt.PrincipalDetails;
 import com.whochucompany.byteclone.jwt.TokenProvider;
 import com.whochucompany.byteclone.logging.Logging;
 import com.whochucompany.byteclone.repository.MemberRepository;
+import com.whochucompany.byteclone.repository.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -31,6 +34,7 @@ public class MemberServiceImpl implements MemberService{
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final TokenProvider tokenProvider;
+    private final RefreshTokenRepository refreshTokenRepository;
 
     // email 중복 체크
     @Transactional(readOnly = true)
@@ -38,7 +42,7 @@ public class MemberServiceImpl implements MemberService{
     public ResponseEntity<?> emailExist(String email) {
         boolean result = memberRepository.existsByEmail(email);
         if (result) { // 결과가 존재하면 참 --> result 가 true 면...
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.entry("result", "false"));
+            return ResponseEntity.ok().body(Map.entry("result", "false"));
         }
         else {
             return ResponseEntity.ok().body(Map.entry("result", "true"));
@@ -110,16 +114,46 @@ public class MemberServiceImpl implements MemberService{
     }
 
     // 회원 로그아웃
+//    public ResponseEntity<?> logout(HttpServletRequest request) {
+//        if (!tokenProvider.validationRefreshToken(request)) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("토큰 정보를 찾을 수 없습니다.");
+//        }
+//        Member member = tokenProvider.getMemberFromAuthentication(); // SecurityContextHolder 에 있는 회원정보를 가져옴
+//        if (null == member) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("사용자를 찾을 수 없습니다.");
+//        }
+//        return tokenProvider.deleteRefreshToken(member);
+//    }
+
+
     public ResponseEntity<?> logout(HttpServletRequest request) {
+
         if (!tokenProvider.validationRefreshToken(request)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("토큰 정보를 찾을 수 없습니다.");
         }
-        Member member = tokenProvider.getMemberFromAuthentication(); // SecurityContextHolder 에 있는 회원정보를 가져옴
-        if (null == member) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("사용자를 찾을 수 없습니다.");
-        }
+
+        String token = tokenProvider.resolveRefreshToken(request);
+
+        RefreshToken refreshToken = refreshTokenRepository.findByRefreshToken(token).orElseThrow(() -> new IllegalArgumentException("회원정보를 찾을 수 없습니다."));
+
+        Member member = memberRepository.findById(refreshToken.getId()).orElseThrow(() -> new IllegalArgumentException("회원정보가 잘못 입력되었습니다."));
+
+//        Member member = tokenProvider.getMemberFromAuthentication(); // SecurityContextHolder 에 있는 회원정보를 가져옴
+//
+//        if (null == member) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("사용자를 찾을 수 없습니다.");
+//        }
+
         return tokenProvider.deleteRefreshToken(member);
     }
+
+
+
+
+
+
+
+
 
     // 그냥 멤버 가져오는거
     @Override

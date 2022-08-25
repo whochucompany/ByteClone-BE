@@ -53,7 +53,7 @@ public class SecurityConfig {
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
 
-        configuration.setExposedHeaders(Arrays.asList("Access-Control-Allow-Headers", "Authorization, x-xsrf-token, Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, " +
+        configuration.setExposedHeaders(Arrays.asList("Access-Control-Allow-Headers", "Authorization, RefreshToken, x-xsrf-token, Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, " +
                 "Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -90,10 +90,10 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/v3/api-docs*", "/swagger*/**").permitAll()
                 .antMatchers("/user/*").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/news").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/news/*").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/news/detail/*").permitAll()
-                //.antMatchers("/*").permitAll()
+//                .antMatchers(HttpMethod.GET, "/api/news").permitAll()
+//                .antMatchers(HttpMethod.GET, "/api/news/*").permitAll()
+//                .antMatchers(HttpMethod.GET, "/api/news/detail/*").permitAll()
+                .antMatchers("/*").permitAll()
                 .anyRequest().permitAll();
 
         return http.build();

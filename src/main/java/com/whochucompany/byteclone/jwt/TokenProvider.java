@@ -167,9 +167,9 @@ public class TokenProvider {
         return false;
     }
 
-    private String resolveRefreshToken(HttpServletRequest request) {
+    public String resolveRefreshToken(HttpServletRequest request) {
         // 헤더에서 refreshToken 추출
-        String refreshToken = request.getHeader("Refresh-Token");
+        String refreshToken = request.getHeader("RefreshToken");
 
         if (StringUtils.hasText(refreshToken) && refreshToken.startsWith("Bearer ")) {
             return refreshToken.substring(7);
