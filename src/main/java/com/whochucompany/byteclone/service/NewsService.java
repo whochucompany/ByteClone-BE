@@ -256,12 +256,12 @@ public class NewsService {
                     .newsId(news.getNewsId().toString())
                     .title(news.getTitle())
                     .content(news.getContent())
-                    .image(news.getContent())
+                    .image(news.getImage())
                     .view(news.getView())
                     .category(news.getCategory())
                     .createdAt(news.getCreatedAt())
                     .modifiedAt(news.getModifiedAt())
-                    .member(news.getMember())
+                    .username(news.getMember().getUsername())
 //                    .commentList(news.getCommentList())   //여기서 무한참조가 발생, member db에 저장할 필요가 x 자주변해서 DB에서
                     .build();
             System.out.println("22222222222222222newsRedis.getNewsId() = " + newsRedis.getNewsId());
@@ -310,7 +310,7 @@ public class NewsService {
             NewsDetailResponseDto newsDetailResponseDto = NewsDetailResponseDto.builder()
                     .newsId(redisLongId)
                     .title(news.getTitle())
-                    .username(news.getMember().getUsername())
+                    .username(news.getUsername())
                     .image(news.getImage())
                     .view(news.getView())
                     .category(news.getCategory())

@@ -26,6 +26,9 @@ public class NewsRedis {
     private String image;
     private View view;  // 뉴스 기사 읽기 권한
     private Category category;  // 뉴스 기사 카테고리
+
+    private String username;
+
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
     private Member member;
